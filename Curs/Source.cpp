@@ -12,8 +12,7 @@ using namespace std;
 using namespace cast;
 
 
-auto MakePassword(const std::string& password)
-{
+auto MakePassword(const std::string& password){
 	return to_string(std::hash<std::string>()(password));
 }
 
@@ -21,8 +20,7 @@ auto MakePassword(const std::string& password)
 string FindName(const char* line) {
 	int i = 0;
 	string word;
-	while (line[i] != ' ')
-	{
+	while (line[i] != ' '){
 		word += line[i];
 		i++;
 	}
@@ -34,16 +32,13 @@ string FindPassword(const char* line) {
 	int i = 0;
 	int j = 0;
 	string word;
-	while (line[i] != ' ')
-	{
+	while (line[i] != ' '){
 		i++;
 	}
 
-	if (line[i] == ' ')
-	{
+	if (line[i] == ' '){
 		j = i + 1;
-		while (line[j] != '\0')
-		{
+		while (line[j] != '\0'){
 			word += line[j];
 			j++;
 		}
@@ -100,8 +95,7 @@ void Login(){
 
 void Register() {
 	ofstream in("Users.txt", ios_base::app);
-	if (!in)
-	{
+	if (!in){
 		cout << "fail";
 	}
 
@@ -144,14 +138,14 @@ void ShowMainMenu() {
 		case 1:
 			user = new Client();
 			LoginMenu(user);
-
 			break;
 		case 2:
 			user = new Admin();
-			user->UserMenu();
+			LoginMenu(user);
 			break;
 		case 3:
 			Register();
+			system("pause");
 			break;
 		default:
 			break;

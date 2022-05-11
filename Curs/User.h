@@ -9,17 +9,16 @@ using namespace std;
 class User
 {
 protected:
-	std::string login;
-	std::string password;
+	string _login;
+	string _password;
 public:
-	auto GetLogin();
-	auto GetPassword();
+	string GetLogin();
+	string GetPassword();
 
-	void SetLogin(std::string login);
-	void SetPassword(std::string password);
+	void SetLogin(string login);
+	void SetPassword(string password);
 
-	auto MakePassword(const std::string& password)
-	{
+	auto MakePassword(const string& password){
 		return to_string(std::hash<std::string>()(password));
 	}
 
@@ -27,8 +26,7 @@ public:
 	string FindName(const char* line) {
 		int i = 0;
 		string word;
-		while (line[i] != ' ')
-		{
+		while (line[i] != ' '){
 			word += line[i];
 			i++;
 		}
@@ -40,13 +38,11 @@ public:
 		int i = 0;
 		int j = 0;
 		string word;
-		while (line[i] != ' ')
-		{
+		while (line[i] != ' '){
 			i++;
 		}
 
-		if (line[i] == ' ')
-		{
+		if (line[i] == ' '){
 			j = i + 1;
 			while (line[j] != '\0')
 			{
@@ -76,11 +72,11 @@ public:
 	void Login() {
 		string login, password;
 		string userLogin, userPassword;
-		ifstream file;
 		string line;
+		ifstream file;
 
 		file.open("Users.txt", ios::app);
-		cout << "Enter login: "; cin >> login; cout << endl;
+		cout << "Enter login: "; cin >> login;
 
 
 		while (getline(file, line)) {
@@ -92,6 +88,10 @@ public:
 					cout << "Enter the password: ";
 					cin >> password;
 					if (MakePassword(password) == userPassword) {
+
+						SetLogin(login);
+						SetPassword(password);
+
 						cout << "You are logged in\n";
 						break;
 					}

@@ -1,21 +1,21 @@
 #include "User.h"
 
-auto User::GetLogin()
+string User::GetLogin()
 {
-	return login;
+	return _login;
 }
 
-auto User::GetPassword()
+string User::GetPassword()
 {
-	return password;
+	return _password;
 }
 
 void User::SetLogin(std::string login)
 {
-	this->login = login;
+	_login = login;
 }
 
 void User::SetPassword(std::string password)
 {
-	this->password = password;
+	_password = password;
 }
