@@ -11,7 +11,7 @@ std::string StringInput(std::string_view message, std::string_view invalidChars)
     while (true)
     {
         std::cout << message;
-        std::getline(std::cin, str);
+        std::cin >> str;
 
         if (str.empty())
             continue;

@@ -1,95 +1,177 @@
 #include <iostream>
+#include <fstream>
+#include <string>
 #include <Windows.h>
 #include "User.h"
 #include "Client.h"
+#include "Admin.h"
 #include "UserInput.h"
+#include "Menus.h"
 
-void ShowMainMenu();
-void ShowLoginMenu();
-void ShowRegistrationMenu();
-void ShowClientMenu();
-void ShowAdminMenu();
+using namespace std;
+using namespace cast;
 
 
-int main()
+auto MakePassword(const std::string& password)
 {
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
+	return to_string(std::hash<std::string>()(password));
+}
 
-    HWND console = GetConsoleWindow();
-    RECT r;
-    GetWindowRect(console, &r); //stores the console's current dimensions
 
-    MoveWindow(console, r.left, r.top, 1350, 700, TRUE); // 800 width, 100 height
+string FindName(const char* line) {
+	int i = 0;
+	string word;
+	while (line[i] != ' ')
+	{
+		word += line[i];
+		i++;
+	}
+	return word;
+}
 
-    ShowMainMenu();
 
-    return 0;
+string FindPassword(const char* line) {
+	int i = 0;
+	int j = 0;
+	string word;
+	while (line[i] != ' ')
+	{
+		i++;
+	}
+
+	if (line[i] == ' ')
+	{
+		j = i + 1;
+		while (line[j] != '\0')
+		{
+			word += line[j];
+			j++;
+		}
+	}
+	return word;
+}
+
+
+bool IsUserExist(string login) {
+	ifstream file;
+	string line;
+	file.open("Users.txt", ios::app);
+
+	while (getline(file, line)){
+		if (login == FindName(line.c_str())) {
+			return true;
+		}
+	}
+	return false;
+	file.close();
+}
+
+
+void Login(){
+	string login, password;
+	string userLogin, userPassword;
+	ifstream file;
+	string line;
+
+	file.open("Users.txt", ios::app);
+	cout << "Enter login: "; cin >> login; cout << endl;
+
+
+	while (getline(file, line)) {
+		userLogin = FindName(line.c_str());
+		userPassword = FindPassword(line.c_str());
+
+		if (login == userLogin) {
+			while (true) {
+				cout << "Enter the password: ";
+				cin >> password;
+				if (MakePassword(password) == userPassword) {
+					cout << "You are logged in\n";
+					break;
+				}
+				else {
+					cout << "Try again\n";
+				}
+			}
+		}
+	}
+}
+
+
+void Register() {
+	ofstream in("Users.txt", ios_base::app);
+	if (!in)
+	{
+		cout << "fail";
+	}
+
+	string login, password;
+	cout << "login: "; cin >> login;
+	cout << "password: "; cin >> password;
+
+
+	if (IsUserExist(login)) {
+		cout << "That name's already exist. Try again\n";
+	}
+	else {
+		in << login << " " << MakePassword(password) << "\n";
+	}
+	in.close();
 }
 
 
 void ShowMainMenu() {
-    int choice;
+	int choice;
+	User* user = nullptr;
 
-    while (true)
-    {
-        system("cls");
-        std::cout <<
-            "1.Зайти как пользователь\n"
-            "2.Зайти как администратор\n"
-            "3.Регистрация\n"
-            "0.Выход\n"
-            "Выберите пункт меню: ";
-        std::cin >> choice;
 
-        system("cls");
+	while (true)
+	{
+		system("cls");
+		cout <<
+			"1.Зайти как пользователь\n"
+			"2.Зайти как администратор\n"
+			"3.Регистрация\n"
+			"0.Выход\n"
+			"Выберите пункт меню: ";
+		cin >> choice;
+		system("cls");
 
-        switch (choice)
-        {
-        case 1:
-            ShowClientMenu();
-            break;
-        case 2:
-            ShowAdminMenu();
-            break;
-        case 3:
-            ShowRegistrationMenu();
-            break;
-        default:
-            break;
-        }
-    }
+		switch (choice)
+		{
+		case 0:
+			exit(0);
+		case 1:
+			user = new Client();
+			LoginMenu(user);
+
+			break;
+		case 2:
+			user = new Admin();
+			user->UserMenu();
+			break;
+		case 3:
+			Register();
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 
-bool isInClientBase() {
-    return false;
-}
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
 
-bool isInAdminBase() {
-    return false;
-}
+	HWND console = GetConsoleWindow();
+	RECT r;
+	GetWindowRect(console, &r); //stores the console's current dimensions
 
+	MoveWindow(console, r.left, r.top, 1350, 700, TRUE); // 800 width, 100 height
 
-void ShowLoginMenu() {
-    std::string login, password;
+	ShowMainMenu();
 
-    login = StringInput("Введите логин");
-
-}
-
-
-void ShowClientMenu() {
-    Client client;
-
-    client.UserMenu();
-}
-
-
-void ShowAdminMenu() {
-}
-
-
-void ShowRegistrationMenu() {
-
+	return 0;
 }

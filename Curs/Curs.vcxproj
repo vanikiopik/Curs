@@ -19,13 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Admin.cpp" />
     <ClCompile Include="Client.cpp" />
+    <ClCompile Include="Menus.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="UserInput.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Admin.h" />
     <ClInclude Include="Client.h" />
+    <ClInclude Include="Menus.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="UserInput.h" />
   </ItemGroup>

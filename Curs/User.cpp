@@ -1,11 +1,14 @@
 #include "User.h"
 
-auto User::MakePassword(const std::string& password)
+auto User::GetLogin()
 {
-	return std::to_string(std::hash<std::string>()(password));
+	return login;
 }
 
-
+auto User::GetPassword()
+{
+	return password;
+}
 
 void User::SetLogin(std::string login)
 {
@@ -14,28 +17,5 @@ void User::SetLogin(std::string login)
 
 void User::SetPassword(std::string password)
 {
-	this->password = MakePassword(password);
+	this->password = password;
 }
-
-auto User::GetLogin()
-{
-	return this->login;
-}
-
-auto User::GetPassword()
-{
-	return this->password;
-}
-
-void User::TryToLogin()
-{
-	if (login == this->login and MakePassword(password) == this->password)
-		isInitialized = true;
-}
-
-void User::LogOut()
-{
-	isInitialized = false;
-}
-
-
