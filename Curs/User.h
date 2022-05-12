@@ -36,7 +36,6 @@ public:
 		return word;
 	}
 
-
 	string FindPassword(const char* line) {
 		int i = 0;
 		int j = 0;
@@ -94,7 +93,6 @@ public:
 						SetLogin(login);
 						SetPassword(password);
 						_isLoggedIn = true;
-						//cout << "You are logged in\n";
 						break;
 					}
 					else {
@@ -134,8 +132,21 @@ public:
 		return word;
 	}
 
+	string GetIDOfOrder(const char* line) {
+		string word;
+		int countStarting = 0;
+
+		while (line[countStarting] != '_') {
+			word += line[countStarting];
+			countStarting++;
+		}
+		return word;
+	}
+
+
 	void GetOperationInfo(const char* line) {
-		cout << "ID Заказа: " << line[0] << endl;
+		cout << "ID Заказа: " << GetIDOfOrder(line) << endl;
+
 		cout << "Тип сделки: ";
 		if (line[2] == '0') {
 			cout << "Ввоз\n";
@@ -143,6 +154,7 @@ public:
 		else {
 			cout << "Вывоз\n";
 		}
+
 		cout << "Статус заявки: ";
 		if (line[4] == '0') {
 			cout << "Не рассмотрена\n";
@@ -150,12 +162,30 @@ public:
 		else {
 			cout << "Рассмотрена\n";
 		}
-		cout << "ID товара:";
-		if (line[6] == '8') {
-			cout << "Парфюмерия\n";
-		}
-		cout << "Количество товара: " << GetValueOfProducts(line);
 
+		//I WANNA DIE
+		cout << "ID товара:";
+		if (line[6] == '0') 
+			cout << "Продукты\n";
+		else if (line[6] == '1')
+			cout << "Мясные изделия\n";
+		else if (line[6] == '2')
+			cout << "Алкоголь\n";
+		else if (line[6] == '3') 
+			cout << "Табак\n";
+		else if (line[6] == '4') 
+			cout << "Непродовальственные\n";
+		else if (line[6] == '5') 
+			cout << "Топливо\n";
+		else if (line[6] == '6') 
+			cout << "Одежда\n";
+		else if (line[6] == '7') 
+			cout << "Электротовары\n";
+		else if (line[6] == '8') 
+			cout << "Парфюмерия\n";
+
+		cout << "Количество товара: " << GetValueOfProducts(line) << endl;
+		cout << "===========\n";
 	}
 
 	virtual void UserMenu() = 0;

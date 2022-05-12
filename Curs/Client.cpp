@@ -110,7 +110,7 @@ void Client::ShowOperationsMenu()
         switch (choice)
         {
         case 1:
-
+            FindClientOperation();
             break;
         case 2:
             break;
@@ -124,9 +124,23 @@ void Client::ShowOperationsMenu()
     }
 }
 
+
 void Client::FindClientOperation()
 {
+    ifstream file;
+    string line;
 
+    file.open("Operations.txt", ios::app);
+
+    while (getline(file, line)) {
+        if (GetLogin() == FindClientName(line.c_str())) {
+            cout << "User was found\n";
+            GetOperationInfo(line.c_str());
+        }
+    }
 }
 
-
+void Client::CreateOperationToImport()
+{
+        
+}
