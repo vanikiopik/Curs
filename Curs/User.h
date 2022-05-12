@@ -71,7 +71,6 @@ public:
 		file.close();
 	}
 
-
 	void Login() {
 		string login, password;
 		string userLogin, userPassword;
@@ -104,6 +103,59 @@ public:
 				}
 			}
 		}
+	}
+
+	string FindClientName(const char* line) {
+		int i = 0;
+		int j = 0;
+		string word;
+
+		while (line[i] != ' ') {
+			i++;
+		}
+
+		j = i + 1;
+		while (line[j] != '\0')
+		{
+			word += line[j];
+			j++;
+		}
+		return word;
+	}
+
+	string GetValueOfProducts(const char* line) {
+		string word;
+		int countStarting = 8;
+
+		while (line[countStarting] != ' ') {
+			word += line[countStarting];
+			countStarting++;
+		}
+		return word;
+	}
+
+	void GetOperationInfo(const char* line) {
+		cout << "ID Заказа: " << line[0] << endl;
+		cout << "Тип сделки: ";
+		if (line[2] == '0') {
+			cout << "Ввоз\n";
+		}
+		else {
+			cout << "Вывоз\n";
+		}
+		cout << "Статус заявки: ";
+		if (line[4] == '0') {
+			cout << "Не рассмотрена\n";
+		}
+		else {
+			cout << "Рассмотрена\n";
+		}
+		cout << "ID товара:";
+		if (line[6] == '8') {
+			cout << "Парфюмерия\n";
+		}
+		cout << "Количество товара: " << GetValueOfProducts(line);
+
 	}
 
 	virtual void UserMenu() = 0;

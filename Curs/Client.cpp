@@ -25,7 +25,7 @@ void Client::UserMenu()
             ShowFeesTable();
             break;
         case 3:
-
+            ShowOperationsMenu();
             break;
         case 0:
 
@@ -35,6 +35,7 @@ void Client::UserMenu()
         }
     }
 }
+
 
 void Client::ShowFeesTable()
 {
@@ -89,6 +90,7 @@ void Client::ShowFeesTable()
     }
 }
 
+
 void Client::ShowOperationsMenu()
 {
     int choice;
@@ -96,10 +98,10 @@ void Client::ShowOperationsMenu()
     {
         //system("cls");
         std::cout <<
-            "1.Показать персональную информацию\n"
-            "2.Таблица процентов на сборы\n"
-            "3.Операции\n"
-            "0. Назад\n"
+            "1.Показать список операций\n"
+            "2.Составить заявку на ввоз\n"
+            "3.Составить заявку на вывоз\n"
+            "0.Отменить заявку\n"
             "Выберите пункт меню: ";
         std::cin >> choice;
 
@@ -108,18 +110,23 @@ void Client::ShowOperationsMenu()
         switch (choice)
         {
         case 1:
+
             break;
         case 2:
-            ShowFeesTable();
             break;
         case 3:
-
             break;
         case 0:
-
             return;
         default:
             break;
         }
     }
 }
+
+void Client::FindClientOperation()
+{
+
+}
+
+
