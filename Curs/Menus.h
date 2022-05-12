@@ -6,6 +6,5 @@
 namespace cast
 {
 	void LoginMenu(User* user);
-
 };
 

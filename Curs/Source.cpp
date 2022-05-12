@@ -133,8 +133,7 @@ void ShowMainMenu() {
 
 		switch (choice)
 		{
-		case 0:
-			exit(0);
+		
 		case 1:
 			user = new Client();
 			LoginMenu(user);
@@ -147,6 +146,8 @@ void ShowMainMenu() {
 			Register();
 			system("pause");
 			break;
+		case 0:
+			exit(0);
 		default:
 			break;
 		}

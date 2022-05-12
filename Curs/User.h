@@ -11,12 +11,15 @@ class User
 protected:
 	string _login;
 	string _password;
+	bool _isLoggedIn = false;
 public:
 	string GetLogin();
 	string GetPassword();
 
 	void SetLogin(string login);
 	void SetPassword(string password);
+
+	bool IsUserInSystem();
 
 	auto MakePassword(const string& password){
 		return to_string(std::hash<std::string>()(password));
@@ -91,8 +94,8 @@ public:
 
 						SetLogin(login);
 						SetPassword(password);
-
-						cout << "You are logged in\n";
+						_isLoggedIn = true;
+						//cout << "You are logged in\n";
 						break;
 					}
 					else {
@@ -104,4 +107,5 @@ public:
 	}
 
 	virtual void UserMenu() = 0;
+
 };

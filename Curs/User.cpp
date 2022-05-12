@@ -19,3 +19,8 @@ void User::SetPassword(std::string password)
 {
 	_password = password;
 }
+
+bool User::IsUserInSystem()
+{
+	return _isLoggedIn;
+}

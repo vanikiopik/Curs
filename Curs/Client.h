@@ -5,6 +5,7 @@ class Client : public User
 {
 public:
 	void UserMenu() override;
-	
+	void ShowFeesTable();
+	void ShowOperationsMenu();
 };
 
