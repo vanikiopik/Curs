@@ -123,9 +123,9 @@ public:
 
 	string GetValueOfProducts(const char* line) {
 		string word;
-		int countStarting = 8;
+		int countStarting = 6;
 
-		while (line[countStarting] != ' ') {
+		while (line[countStarting] != '_') {
 			word += line[countStarting];
 			countStarting++;
 		}
@@ -134,11 +134,22 @@ public:
 
 	string GetIDOfOrder(const char* line) {
 		string word;
-		int countStarting = 0;
+		int i = 0;
+		int j = 0;
+		int underlineCounter = 0;
 
-		while (line[countStarting] != '_') {
-			word += line[countStarting];
-			countStarting++;
+		while (line[i] != ' ') {
+			if (line[i] == '_'){
+				underlineCounter++;
+				if (underlineCounter == 4) {
+					j = i + 1;
+					while (line[j] != ' ') {
+						word += line[j];
+						j++;
+					}
+				}
+			}
+			i++;
 		}
 		return word;
 	}
@@ -148,7 +159,7 @@ public:
 		cout << "ID Заказа: " << GetIDOfOrder(line) << endl;
 
 		cout << "Тип сделки: ";
-		if (line[2] == '0') {
+		if (line[0] == '0') {
 			cout << "Ввоз\n";
 		}
 		else {
@@ -156,7 +167,7 @@ public:
 		}
 
 		cout << "Статус заявки: ";
-		if (line[4] == '0') {
+		if (line[2] == '0') {
 			cout << "Не рассмотрена\n";
 		}
 		else {
@@ -165,23 +176,23 @@ public:
 
 		//I WANNA DIE
 		cout << "ID товара:";
-		if (line[6] == '0') 
+		if (line[4] == '0') 
 			cout << "Продукты\n";
-		else if (line[6] == '1')
+		else if (line[4] == '1')
 			cout << "Мясные изделия\n";
-		else if (line[6] == '2')
+		else if (line[4] == '2')
 			cout << "Алкоголь\n";
-		else if (line[6] == '3') 
+		else if (line[4] == '3') 
 			cout << "Табак\n";
-		else if (line[6] == '4') 
+		else if (line[4] == '4') 
 			cout << "Непродовальственные\n";
-		else if (line[6] == '5') 
+		else if (line[4] == '5') 
 			cout << "Топливо\n";
-		else if (line[6] == '6') 
+		else if (line[4] == '6') 
 			cout << "Одежда\n";
-		else if (line[6] == '7') 
+		else if (line[4] == '7') 
 			cout << "Электротовары\n";
-		else if (line[6] == '8') 
+		else if (line[4] == '8') 
 			cout << "Парфюмерия\n";
 
 		cout << "Количество товара: " << GetValueOfProducts(line) << endl;
