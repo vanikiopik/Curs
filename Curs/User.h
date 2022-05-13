@@ -25,7 +25,6 @@ public:
 		return to_string(std::hash<std::string>()(password));
 	}
 
-
 	string FindName(const char* line) {
 		int i = 0;
 		string word;
@@ -103,6 +102,7 @@ public:
 		}
 	}
 
+
 	string FindClientName(const char* line) {
 		int i = 0;
 		int j = 0;
@@ -154,12 +154,27 @@ public:
 		return word;
 	}
 
+	int GetLastOrderID() {
+		string line;
+		ifstream file;
+		int IDCounter = 0;
+
+		file.open("Operations.txt", ios::app);
+
+		while (file.peek() != EOF) {
+			getline(file, line);
+			IDCounter++;
+		}
+		file.close();
+		return IDCounter - 1;
+	}
+
 
 	void GetOperationInfo(const char* line) {
 		cout << "ID Заказа: " << GetIDOfOrder(line) << endl;
 
 		cout << "Тип сделки: ";
-		if (line[0] == '0') {
+		if (line[0] == '1') {
 			cout << "Ввоз\n";
 		}
 		else {

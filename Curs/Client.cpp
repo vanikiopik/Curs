@@ -19,7 +19,7 @@ void Client::UserMenu()
         switch (choice)
         {
         case 1:
-            cout << "Login: " << GetLogin() << "| Password: " << GetPassword() << endl;
+            cout << "Login: " << GetLogin() << "\n| Password: " << GetPassword() << endl;
             break;
         case 2:
             ShowFeesTable();
@@ -28,7 +28,6 @@ void Client::UserMenu()
             ShowOperationsMenu();
             break;
         case 0:
-
             return;
         default:
             break;
@@ -58,7 +57,7 @@ void Client::ShowFeesTable()
             cout << "ВВОЗ\n"
                 "Номер\tНаименование\t\tКатегория\t\tПроцент за ед.\n"
                 "0\tПродукты\t\tПродукты\t\t7%\n"
-                "1\tМясные изделия\t\tПродукты\t\t7%+ 3%\n"
+                "1\tМясные изделия\t\tПродукты\t\t7% +3%\n"
                 "2\tАлкоголь\t\tПродукты\t\t7% +5%\n"
                 "3\tТабак\t\t\tПродукты\t\t7% +8%\n"
                 "4\tНепродовольствие\tНепродовольствие\t15%\n"
@@ -71,15 +70,15 @@ void Client::ShowFeesTable()
         case 2:
             cout << "ВЫВОЗ\n"
                 "Номер\tНаименование\t\tКатегория\t\tПроцент за ед.\n"
-                "9\tПродукты\t\tПродукты\t\t10%\n"
-                "10\tМясные изделия\t\tПродукты\t\t10% +7%\n"
-                "11\tАлкоголь\t\tПродукты\t\t10% +10%\n"
-                "12\tТабак\t\t\tПродукты\t\t10% +13%\n"
-                "13\tНепродовольствие\tНепродовольствие\t20%\n"
-                "14\tТопливо\t\t\tНепродовольствие\t20% +15%\n"
-                "15\tОдежда\t\t\tНепродовольствие\t20% +6%\n"
-                "16\tЭлектротовары\t\tНепродовольствие\t20% +9%\n"
-                "17\tПарфюмерия\t\tНепродовольствие\t20% +10%\n";
+                "0\tПродукты\t\tПродукты\t\t10%\n"
+                "1\tМясные изделия\t\tПродукты\t\t10% +7%\n"
+                "2\tАлкоголь\t\tПродукты\t\t10% +10%\n"
+                "3\tТабак\t\t\tПродукты\t\t10% +13%\n"
+                "4\tНепродовольствие\tНепродовольствие\t20%\n"
+                "5\tТопливо\t\t\tНепродовольствие\t20% +15%\n"
+                "6\tОдежда\t\t\tНепродовольствие\t20% +6%\n"
+                "7\tЭлектротовары\t\tНепродовольствие\t20% +9%\n"
+                "8\tПарфюмерия\t\tНепродовольствие\t20% +10%\n";
             system("pause");
             break;
         case 0:
@@ -101,7 +100,9 @@ void Client::ShowOperationsMenu()
             "1.Показать список операций\n"
             "2.Составить заявку на ввоз\n"
             "3.Составить заявку на вывоз\n"
-            "0.Отменить заявку\n"
+            "4.Найти заявку\n"
+            "5.Отменить заявку\n"
+            "0.Назад\n"
             "Выберите пункт меню: ";
         std::cin >> choice;
 
@@ -113,8 +114,14 @@ void Client::ShowOperationsMenu()
             FindClientOperation();
             break;
         case 2:
+            CreateOperationToImport();
             break;
         case 3:
+            CreateOperationToExport();
+            break;
+        case 4:
+            break;
+        case 5:
             break;
         case 0:
             return;
@@ -140,7 +147,36 @@ void Client::FindClientOperation()
     }
 }
 
+
 void Client::CreateOperationToImport()
 {
-        
+    const int IMPORT = 1;
+    const int STATUS = 0;
+    int ID_tovar;
+    int Count;
+    cout << "Введите ID товара: "; cin >> ID_tovar;
+    cout << "\nВведите количество товара: "; cin >> Count;
+
+    fstream file;
+    file.open("Operations.txt", ios::app);
+    file << IMPORT << "_" << STATUS << "_" << ID_tovar << "_" << Count << "_" << GetLastOrderID() << " " << this->GetLogin() << "\n";
+    file.close();
+
+}
+
+
+void Client::CreateOperationToExport()
+{
+    const int IMPORT = 0;
+    const int STATUS = 0;
+    int ID_tovar;
+    int Count;
+    cout << "Введите ID товара: "; cin >> ID_tovar;
+    cout << "\nВведите количество товара: "; cin >> Count;
+
+
+    fstream file;
+    file.open("Operations.txt", ios::app);
+    file << IMPORT << "_" << STATUS << "_" << ID_tovar << "_" << Count << "_" << GetLastOrderID() << " " << this->GetLogin() << "\n";
+    file.close();
 }

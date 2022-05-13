@@ -13,6 +13,9 @@ public:
 	void ShowFeesTable();
 	void ShowOperationsMenu();
 	void FindClientOperation();
+
+
+
 	void CreateOperationToImport();
 	void CreateOperationToExport();
 };

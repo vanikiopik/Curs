@@ -1,1 +1,6 @@
-1_1_4_10_0 Kal
+All operations statistics
+
+1_0_7_10_1 Kal
+1_0_6_123_2 Kal
+1_0_6_23_3 Kam
+0_0_5_23_4 Kal
