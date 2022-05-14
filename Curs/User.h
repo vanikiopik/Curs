@@ -12,6 +12,7 @@ protected:
 	string _login;
 	string _password;
 	bool _isLoggedIn = false;
+
 public:
 	string GetLogin();
 	string GetPassword();
@@ -69,7 +70,7 @@ public:
 		file.close();
 	}
 
-	void Login() {
+	virtual void Login() {
 		string login, password;
 		string userLogin, userPassword;
 		string line;
@@ -88,7 +89,6 @@ public:
 					cout << "Enter the password: ";
 					cin >> password;
 					if (MakePassword(password) == userPassword) {
-
 						SetLogin(login);
 						SetPassword(password);
 						_isLoggedIn = true;

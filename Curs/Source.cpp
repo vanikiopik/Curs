@@ -137,10 +137,12 @@ void ShowMainMenu() {
 		case 1:
 			user = new Client();
 			LoginMenu(user);
+			user = nullptr;
 			break;
 		case 2:
 			user = new Admin();
 			LoginMenu(user);
+			user = nullptr;
 			break;
 		case 3:
 			Register();
