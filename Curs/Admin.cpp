@@ -85,10 +85,10 @@ void Admin::ManageToClients()
         switch (choice)
         {
         case 1:
-            ShowAllUsers();
+            ShowAvailableUsers();
             break;
         case 2:
-
+            ShowUserOperations();
             break;
         case 0:
 
@@ -133,14 +133,13 @@ void Admin::ManageToOperations()
     }
 }
 
-void Admin::ShowAllUsers()
+void Admin::ShowAvailableUsers()
 {
     list <string> ListOfNames;
-
     string line;
     ifstream file;
-    string word;
-    int i = 0;
+
+
     file.open("Operations.txt", ios::app);
 
     while (file.peek() != EOF) {
@@ -156,8 +155,28 @@ void Admin::ShowAllUsers()
     ListOfNames.pop_front();
 
     for (auto name : ListOfNames) {
-        cout << i << name << endl;
-        i++;
+        cout << name << endl;
+    }
+    system("pause");
+}
+
+void Admin::ShowUserOperations()
+{
+    string line;
+    ifstream file;
+
+
+    string login;
+    cout << "¬ведите логин пользовател€: ";
+    cin >> login;
+
+    file.open("Operations.txt", ios::app);
+
+    while (file.peek() != EOF) {
+        getline(file, line);
+        if (login == FindClientName(line.c_str())) {
+            GetOperationInfo(line.c_str());
+        }
     }
     system("pause");
 }

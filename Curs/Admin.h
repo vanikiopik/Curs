@@ -15,5 +15,6 @@ public:
 	void ManageToClients();
 	void ManageToOperations();
 
-	void ShowAllUsers();
+	void ShowAvailableUsers();
+	void ShowUserOperations();
 };
