@@ -185,9 +185,13 @@ public:
 		if (line[2] == '0') {
 			cout << "Не рассмотрена\n";
 		}
-		else {
-			cout << "Рассмотрена\n";
+		if (line[2] == '1') {
+			cout << "Принята\n";
 		}
+		if (line[2] == '2') {
+			cout << "Отклонена\n";
+		}
+		
 
 		//I WANNA DIE
 		cout << "ID товара:";

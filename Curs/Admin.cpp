@@ -90,8 +90,12 @@ void Admin::ManageToClients()
         case 2:
             ShowUserOperations();
             break;
-        case 0:
+        case 3:
+            break;
+        case 4:
 
+            break;
+        case 0:
             return;
         default:
             break;
@@ -109,7 +113,7 @@ void Admin::ManageToOperations()
         std::cout <<
             "1.Показать все операции\n"
             "2.Применить фильтр поиска\n"
-            "3.Рассмотреть операцию\n"
+            "3.Рассмотреть операции\n"
             "0. Назад\n"
             "Выберите пункт меню: ";
         std::cin >> choice;
@@ -122,7 +126,10 @@ void Admin::ManageToOperations()
 
             break;
         case 2:
-
+            
+            break;
+        case 3:
+            ReviseClientOperation();
             break;
         case 0:
 
@@ -133,9 +140,10 @@ void Admin::ManageToOperations()
     }
 }
 
+
 void Admin::ShowAvailableUsers()
 {
-    list <string> ListOfNames;
+    list <string> ListOfUsers;
     string line;
     ifstream file;
 
@@ -144,21 +152,23 @@ void Admin::ShowAvailableUsers()
 
     while (file.peek() != EOF) {
         getline(file, line);
-        ListOfNames.push_back(FindClientName(line.c_str()));
+        ListOfUsers.push_back(FindClientName(line.c_str()));
     }
 
     //Sotring the names
-    ListOfNames.sort();
+    ListOfUsers.sort();
     //Delete dupliates
-    ListOfNames.unique();
+    ListOfUsers.unique();
     //Delete the first void element
-    ListOfNames.pop_front();
+    ListOfUsers.pop_front();
 
-    for (auto name : ListOfNames) {
+    for (auto name : ListOfUsers) {
         cout << name << endl;
     }
     system("pause");
+    file.close();
 }
+
 
 void Admin::ShowUserOperations()
 {
@@ -179,4 +189,81 @@ void Admin::ShowUserOperations()
         }
     }
     system("pause");
+    file.close();
+}
+
+
+void Admin::ReviseClientOperation()
+{
+    int i = 0;
+    int decision;
+
+    list <string> ListOfOperations;
+    list <string> CurrentClientOperations;
+    list <int> PositionOfClientInFile;
+
+   // list <string> :: iterator it = 
+
+    string line;
+    ifstream file;
+
+    string login;
+    cout << "Введите логин пользователя: ";
+    cin >> login;
+
+
+    //Copy all info of operations 
+    file.open("Operations.txt", ios::app);
+
+    for (int i = 0; file.peek() != EOF; i++) {
+        getline(file, line);
+        ListOfOperations.push_back(line);
+    }
+    file.close();
+    cout << "All data was saved\n";
+
+
+    //Copy info of current user's operations and remember the position of this client in txt file
+    file.open("Operations.txt", ios::app);
+
+    for (int i = 0; file.peek() != EOF; i++) {
+        getline(file, line);
+        if (login == FindClientName(line.c_str())) {
+            CurrentClientOperations.push_back(line);
+            PositionOfClientInFile.push_back(i);
+        }
+    }
+    file.close();
+    cout << "All CLIENT data was saved\n";
+
+
+    //Changing the const position of decision's status 1 - CONFIRM, 2 - REJECT 
+    for (auto &name : CurrentClientOperations) {
+        GetOperationInfo(name.c_str());
+        cout << "1.Принять сбор\n"
+                "2.Отклонить сбор\n"
+                "0.Не рассматривать сбор\n"
+                "Ваш выбор: ";
+        cin >> decision;
+
+        switch (decision)
+        {
+        case 1:
+            name[2] = '1';
+            break;
+        case 2:
+            name[2] = '2';
+            break;
+        default:
+            break;
+        }
+    }
+
+    
+    for (auto name : CurrentClientOperations) {
+        GetOperationInfo(name.c_str());
+    }
+    system("pause");
+
+
 }

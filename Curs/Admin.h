@@ -2,6 +2,8 @@
 #include "User.h"
 #include <vector>
 #include <list>
+#include <map>
+#include <iterator>
 
 
 class Admin : public User
@@ -17,4 +19,8 @@ public:
 
 	void ShowAvailableUsers();
 	void ShowUserOperations();
+
+	void ReviseClientOperation();
+
 };
+ 
