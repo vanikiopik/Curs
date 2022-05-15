@@ -132,7 +132,6 @@ void Admin::ManageToOperations()
             ReviseClientOperation();
             break;
         case 0:
-
             return;
         default:
             break;
@@ -204,6 +203,7 @@ void Admin::ReviseClientOperation()
 
 
     string line;
+    fstream out;
     ifstream file;
 
     string login;
@@ -219,7 +219,6 @@ void Admin::ReviseClientOperation()
         ListOfOperations.push_back(line);
     }
     file.close();
-    cout << "All data was saved\n";
 
 
     //Copy info of current user's operations and remember the position of this client in txt file
@@ -233,19 +232,20 @@ void Admin::ReviseClientOperation()
         }
     }
     file.close();
-    cout << "All CLIENT data was saved\n";
 
 
-    //Changing the const position of decision's status 1 - CONFIRM, 2 - REJECT 
+    //Changing the decision's status: 1 - CONFIRM, 2 - REJECT
+    //Last Operation in file cannot be read [STRING OUT OF RANGE ERROR] !!!!!!!!!!!!!!!!!!!!!!!!!!
+    //!!!!Make return method ReturnString and then rewrite &name!!!!!!!!!!! <- MB can fix
     for (auto &name : CurrentClientOperations) {
         GetOperationInfo(name.c_str());
+
         cout << "1.Принять сбор\n"
                 "2.Отклонить сбор\n"
-                "0.Не рассматривать сбор\n"
+                "0.(или другая клавиша) Не рассматривать сбор\n"
                 "Ваш выбор: ";
         cin >> decision;
-
-        switch (decision)
+        switch (decision)        
         {
         case 1:
             name[2] = '1';
@@ -259,20 +259,15 @@ void Admin::ReviseClientOperation()
     }
 
 
-    //Show editing operation to the console
-    /*for (auto name : CurrentClientOperations) {
-        GetOperationInfo(name.c_str());
-    }
-    system("pause");*/
-
-    fstream out;
-    out.open("test.txt", ios::app);
+    //Rewriting the file
+    out.open("Operations.txt");
 
     for (auto &name : ListOfOperations) {  //Go through all operation
         for (auto& numbers : PositionOfClientInFile) {  //If pos same -> change line to CurentClientOperation
             if (numbers == position) {
-                out << CurrentClientOperations.front() << "\n";
+                name = CurrentClientOperations.front();
                 CurrentClientOperations.pop_front();
+                break;
             } 
         }
         out << name;
