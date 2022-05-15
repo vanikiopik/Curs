@@ -195,14 +195,13 @@ void Admin::ShowUserOperations()
 
 void Admin::ReviseClientOperation()
 {
-    int i = 0;
+    int position = 0;
     int decision;
 
     list <string> ListOfOperations;
     list <string> CurrentClientOperations;
     list <int> PositionOfClientInFile;
 
-   // list <string> :: iterator it = 
 
     string line;
     ifstream file;
@@ -259,11 +258,27 @@ void Admin::ReviseClientOperation()
         }
     }
 
-    
-    for (auto name : CurrentClientOperations) {
+
+    //Show editing operation to the console
+    /*for (auto name : CurrentClientOperations) {
         GetOperationInfo(name.c_str());
     }
+    system("pause");*/
+
+    fstream out;
+    out.open("test.txt", ios::app);
+
+    for (auto &name : ListOfOperations) {  //Go through all operation
+        for (auto& numbers : PositionOfClientInFile) {  //If pos same -> change line to CurentClientOperation
+            if (numbers == position) {
+                out << CurrentClientOperations.front() << "\n";
+                CurrentClientOperations.pop_front();
+            } 
+        }
+        out << name;
+        out << "\n";
+        position++;
+    }
+    file.close();
     system("pause");
-
-
 }
