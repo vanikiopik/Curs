@@ -159,7 +159,7 @@ void Admin::ShowAvailableUsers()
     //Delete dupliates
     ListOfUsers.unique();
     //Delete the first void element
-    ListOfUsers.pop_front();
+   // ListOfUsers.pop_front();
 
     for (auto name : ListOfUsers) {
         cout << name << endl;

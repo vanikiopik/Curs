@@ -133,7 +133,6 @@ void ShowMainMenu() {
 
 		switch (choice)
 		{
-		
 		case 1:
 			user = new Client();
 			LoginMenu(user);

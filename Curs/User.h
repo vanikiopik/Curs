@@ -107,7 +107,8 @@ public:
 		int i = 0;
 		int j = 0;
 		string word;
-
+		if (line[0] == '\0')
+			return "";
 		while (line[i] != ' ') {
 			i++;
 		}
