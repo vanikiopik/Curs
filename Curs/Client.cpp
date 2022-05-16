@@ -111,7 +111,7 @@ void Client::ShowOperationsMenu()
         switch (choice)
         {
         case 1:
-            FindClientOperation();
+            FindClientOperations();
             break;
         case 2:
             CreateOperationToImport();
@@ -120,8 +120,10 @@ void Client::ShowOperationsMenu()
             CreateOperationToExport();
             break;
         case 4:
+            FindOperation();
             break;
         case 5:
+            CancelTheOperation();
             break;
         case 0:
             return;
@@ -132,7 +134,7 @@ void Client::ShowOperationsMenu()
 }
 
 
-void Client::FindClientOperation()
+void Client::FindClientOperations()
 {
     ifstream file;
     string line;
@@ -145,6 +147,97 @@ void Client::FindClientOperation()
             GetOperationInfo(line.c_str());
         }
     }
+}
+
+void Client::FindOperation()
+{
+    string number;
+
+
+    ifstream file;
+    string line;
+
+    file.open("Operations.txt", ios::app);
+    
+    
+    cout << "¬ведите ID за€вки: ";
+    cin >> number;
+
+    while (getline(file, line)) {
+        if (number == GetIDOfOrder(line.c_str())) {
+            if (GetLogin() == FindClientName(line.c_str())) {
+                GetOperationInfo(line.c_str());
+                system("pause");
+                break;
+            }
+            else {
+                cout << "Permission denied\n";
+                break;
+            }
+        }
+    }
+}
+
+void Client::CancelTheOperation()
+{
+    int positionOfOperation = 0;
+    int i = 0;
+
+    list <string> ListOfOperations;
+
+
+    string line;
+    ofstream out;
+    ifstream file;
+
+    string ID;
+    cout << "¬ведите ID за€вки: ";
+    cin >> ID;
+
+
+    //Copy all info of operations 
+    file.open("Operations.txt", ios::app);
+
+    for (int i = 0; file.peek() != EOF; i++) {
+        getline(file, line);
+        ListOfOperations.push_back(line);
+    }
+    file.close();
+
+
+    //Copy info of current operation and remember the position of this in  file
+    file.open("Operations.txt", ios::app);
+
+    for (int i = 0; file.peek() != EOF; i++) {
+        getline(file, line);
+        if (ID == GetIDOfOrder(line.c_str())) {
+            positionOfOperation = i;
+            break;
+        }
+    }
+    file.close();
+
+
+    i = 0;
+    for (std::list<string>::iterator it = ListOfOperations.begin(); it != ListOfOperations.end(); i++) {
+        if (positionOfOperation == i) {
+            ListOfOperations.erase(it);
+            break;
+        }
+        else {
+            it++;
+        }
+    }
+
+
+    out.open("Operations.txt");
+
+    //Rewriting the file
+    for (auto& name : ListOfOperations) {
+        out << name << "\n";
+    }
+    file.close();
+    system("pause");
 }
 
 

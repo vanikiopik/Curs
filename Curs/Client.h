@@ -2,7 +2,7 @@
 #include "User.h"
 #include <iostream>
 #include <fstream>
-#include <vector>
+#include <list>
 
 class Client : public User
 {
@@ -10,10 +10,17 @@ private:
 
 public:
 	void UserMenu() override;
+
 	void ShowFeesTable();
+
 	void ShowOperationsMenu();
-	void FindClientOperation();
+
+	void FindClientOperations();
+
+	void FindOperation();
+
+	void CancelTheOperation();
+
 	void CreateOperationToImport();
 	void CreateOperationToExport();
 };
-

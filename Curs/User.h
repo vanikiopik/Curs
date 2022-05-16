@@ -169,7 +169,7 @@ public:
 			IDCounter++;
 		}
 		file.close();
-		return IDCounter - 1;
+		return IDCounter;
 	}
 
 
@@ -222,5 +222,4 @@ public:
 	}
 
 	virtual void UserMenu() = 0;
-
 };

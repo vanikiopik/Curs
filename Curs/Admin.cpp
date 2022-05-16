@@ -65,6 +65,7 @@ void Admin::UserMenu()
 }
 
 
+//Menu to oerate with client
 void Admin::ManageToClients()
 {
     int choice;
@@ -74,8 +75,7 @@ void Admin::ManageToClients()
         std::cout <<
             "1.Просмотреть всех пользователей\n"
             "2.Просмотреть операции выбранного пользователя\n"
-            "3.Применить фильтр поиска\n"
-            "4.Рассмотреть операцию\n"
+            //"3.Применить фильтр поиска\n"
             "0. Назад\n"
             "Выберите пункт меню: ";
         std::cin >> choice;
@@ -85,15 +85,12 @@ void Admin::ManageToClients()
         switch (choice)
         {
         case 1:
-            ShowAvailableUsers();
+            ShowAvailableClients();
             break;
         case 2:
-            ShowUserOperations();
+            ShowClientOperations();
             break;
         case 3:
-            break;
-        case 4:
-
             break;
         case 0:
             return;
@@ -103,7 +100,7 @@ void Admin::ManageToClients()
     }
 }
 
-
+//Menu to oerate with client's operations 
 void Admin::ManageToOperations()
 {
     int choice;
@@ -112,8 +109,8 @@ void Admin::ManageToOperations()
         system("cls");
         std::cout <<
             "1.Показать все операции\n"
-            "2.Применить фильтр поиска\n"
-            "3.Рассмотреть операции\n"
+            //"2.Применить фильтр поиска\n"
+            "3.Рассмотреть операции пользователя\n"
             "0. Назад\n"
             "Выберите пункт меню: ";
         std::cin >> choice;
@@ -123,7 +120,7 @@ void Admin::ManageToOperations()
         switch (choice)
         {
         case 1:
-
+            ShowAllAvailableOperations();
             break;
         case 2:
             
@@ -140,7 +137,8 @@ void Admin::ManageToOperations()
 }
 
 
-void Admin::ShowAvailableUsers()
+//Show clients that creates operations in system
+void Admin::ShowAvailableClients()
 {
     list <string> ListOfUsers;
     string line;
@@ -158,8 +156,7 @@ void Admin::ShowAvailableUsers()
     ListOfUsers.sort();
     //Delete dupliates
     ListOfUsers.unique();
-    //Delete the first void element
-   // ListOfUsers.pop_front();
+
 
     for (auto name : ListOfUsers) {
         cout << name << endl;
@@ -168,8 +165,24 @@ void Admin::ShowAvailableUsers()
     file.close();
 }
 
+//Show all operations info 
+void Admin::ShowAllAvailableOperations()
+{
+    string line;
+    ifstream file;
 
-void Admin::ShowUserOperations()
+    file.open("Operations.txt", ios::app);
+
+    while (file.peek() != EOF) {
+        getline(file, line);
+        cout << "Client name: " << FindClientName(line.c_str()) << endl;
+        GetOperationInfo(line.c_str());
+    }
+    system("pause");
+}
+
+//Show current client operations
+void Admin::ShowClientOperations()
 {
     string line;
     ifstream file;
@@ -191,7 +204,7 @@ void Admin::ShowUserOperations()
     file.close();
 }
 
-
+//Confirm or reject client operations
 void Admin::ReviseClientOperation()
 {
     int position = 0;
@@ -235,8 +248,6 @@ void Admin::ReviseClientOperation()
 
 
     //Changing the decision's status: 1 - CONFIRM, 2 - REJECT
-    //Last Operation in file cannot be read [STRING OUT OF RANGE ERROR] !!!!!!!!!!!!!!!!!!!!!!!!!!
-    //!!!!Make return method ReturnString and then rewrite &name!!!!!!!!!!! <- MB can fix
     for (auto &name : CurrentClientOperations) {
         GetOperationInfo(name.c_str());
 
