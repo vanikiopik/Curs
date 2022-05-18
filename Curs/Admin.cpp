@@ -42,6 +42,7 @@ void Admin::UserMenu()
         std::cout <<
             "1.Работа с клиентами\n"
             "2.Работа с операциями\n"
+            "3.Показать глобальную статистику\n"
             "0. Назад\n"
             "Выберите пункт меню: ";
         std::cin >> choice;
@@ -55,6 +56,9 @@ void Admin::UserMenu()
             break;
         case 2:
             ManageToOperations();
+            break;
+        case 3:
+            ShowAllStatistics();
             break;
         case 0:
             return;
@@ -163,6 +167,16 @@ void Admin::ShowAvailableClients()
     }
     system("pause");
     file.close();
+}
+
+void Admin::ShowAllStatistics()
+{
+    cout << "Количество клиентов: " << GetCountOfUsers("Users.txt") << endl;
+    cout << "Количество админитсраторов: " << GetCountOfUsers("Admins.txt") << endl;
+    cout << "Количество всех заявок: " << GetCountOfUsers("Operations.txt") << endl;
+    cout << "Принятые / отклоненные / на рассотрении : " << GetStatusOfOperations() << endl;
+    system("pause");
+
 }
 
 //Show all operations info 
@@ -287,4 +301,31 @@ void Admin::ReviseClientOperation()
     }
     file.close();
     system("pause");
+}
+
+string Admin::GetStatusOfOperations()
+{
+    string line;
+    ifstream file;
+
+    int accepted = 0;
+    int rejected = 0;
+    int noStatus = 0;
+
+
+    file.open("Operations.txt", ios::app);
+    while (file.peek() != EOF) {
+        getline(file, line);
+        if (line[2] == '0') {
+            noStatus++;
+        }
+        else if (line[2] == '1') {
+            accepted++;
+        }
+        else if (line[2] == '2') {
+            rejected++;
+        }
+    }
+        
+    return  to_string(accepted) + " / " + to_string(rejected) + " / " + to_string(noStatus);
 }

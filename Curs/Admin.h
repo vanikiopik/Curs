@@ -18,10 +18,13 @@ public:
 	void ManageToOperations();
 
 	void ShowAvailableClients();
+	void ShowAllStatistics();
 	void ShowAllAvailableOperations();
 	void ShowClientOperations();
 
 	void ReviseClientOperation();
+
+	string GetStatusOfOperations();
 
 };
  

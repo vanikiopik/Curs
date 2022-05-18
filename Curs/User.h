@@ -155,6 +155,7 @@ public:
 		return word;
 	}
 
+	int GetCountOfUsers(string fileName);
 
 	//WILL BE BETTER TO FIND MAX VALUE OF ID AND RETURN COUNTER + 1 TO NEXT OPERATION
 	int GetLastOrderID() {
