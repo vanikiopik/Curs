@@ -102,6 +102,7 @@ void Client::ShowOperationsMenu()
             "3.Составить заявку на вывоз\n"
             "4.Найти заявку\n"
             "5.Отменить заявку\n"
+            "6. Отсортировать операции\n"
             "0.Назад\n"
             "Выберите пункт меню: ";
         std::cin >> choice;
@@ -124,6 +125,10 @@ void Client::ShowOperationsMenu()
             break;
         case 5:
             CancelTheOperation();
+            break;
+        case 6:
+            //Sort by value of products, not changing file
+
             break;
         case 0:
             return;

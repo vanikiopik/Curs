@@ -113,8 +113,9 @@ void Admin::ManageToOperations()
         system("cls");
         std::cout <<
             "1.Показать все операции\n"
-            //"2.Применить фильтр поиска\n"
+            "2.Применить фильтр поиска\n"
             "3.Рассмотреть операции пользователя\n"
+            "4.Отсортировать операции\n"
             "0. Назад\n"
             "Выберите пункт меню: ";
         std::cin >> choice;
@@ -131,6 +132,9 @@ void Admin::ManageToOperations()
             break;
         case 3:
             ReviseClientOperation();
+            break;
+        case 4:
+            //Sort txt file by value of products
             break;
         case 0:
             return;
