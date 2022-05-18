@@ -303,6 +303,7 @@ void Admin::ReviseClientOperation()
     system("pause");
 }
 
+//Get count by each operation stats
 string Admin::GetStatusOfOperations()
 {
     string line;

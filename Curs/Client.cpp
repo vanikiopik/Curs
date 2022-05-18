@@ -183,6 +183,8 @@ void Client::CancelTheOperation()
     int positionOfOperation = 0;
     int i = 0;
 
+    bool isTrueUser = false;
+
     list <string> ListOfOperations;
 
 
@@ -211,8 +213,14 @@ void Client::CancelTheOperation()
     for (int i = 0; file.peek() != EOF; i++) {
         getline(file, line);
         if (ID == GetIDOfOrder(line.c_str())) {
-            positionOfOperation = i;
-            break;
+            if (GetLogin() == FindClientName(line.c_str())) {
+                positionOfOperation = i;
+                break;
+            }
+            else {
+                cout << "Permission denied\n";
+                return;
+            }
         }
     }
     file.close();
