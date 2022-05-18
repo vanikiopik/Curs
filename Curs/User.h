@@ -161,16 +161,19 @@ public:
 	int GetLastOrderID() {
 		string line;
 		ifstream file;
-		int IDCounter = 0;
+		string temp = "-1";
 
 		file.open("Operations.txt", ios::app);
 
 		while (file.peek() != EOF) {
 			getline(file, line);
-			IDCounter++;
+			if (GetIDOfOrder(line.c_str()) > temp) {
+				temp = GetIDOfOrder(line.c_str());
+			}
 		}
 		file.close();
-		return IDCounter;
+		cout << temp;
+		return atoi(temp.c_str()) + 1;
 	}
 
 
