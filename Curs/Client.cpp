@@ -147,7 +147,6 @@ void Client::FindClientOperations()
 
     while (getline(file, line)) {
         if (GetLogin() == FindClientName(line.c_str())) {
-            cout << "User was found\n";
             GetOperationInfo(line.c_str());
         }
     }

@@ -182,51 +182,57 @@ public:
 	string GetDirectionOfOperation(const char* line);
 
 	void GetOperationInfo(const char* line) {
-		cout << "ID Заказа: " << GetIDOfOrder(line) << endl;
 
-		cout << "Тип сделки: ";
+
+		cout << "ID Заказа\t" << "Тип сделки\t" << "Статус заявки\t" << "Название товарав\t" << "Количество товара\n";
+
+		cout << GetIDOfOrder(line) << "\t\t";
+
 		if (line[0] == '1') {
-			cout << "Ввоз\n";
+			cout << "Ввоз";
 		}
 		else {
-			cout << "Вывоз\n";
+			cout << "Вывоз";
 		}
 
-		cout << "Статус заявки: ";
+		cout << "\t\t";
+
 		if (line[2] == '0') {
-			cout << "Не рассмотрена\n";
+			cout << "Не рассмотрена";
 		}
-		if (line[2] == '1') {
-			cout << "Принята\n";
+		else if (line[2] == '1') {
+			cout << "Принята";
 		}
-		if (line[2] == '2') {
-			cout << "Отклонена\n";
+		else if (line[2] == '2') {
+			cout << "Отклонена";
 		}
 		
+		cout << "\t";
 
 		//I WANNA DIE
-		cout << "ID товара:";
 		if (line[4] == '0') 
-			cout << "Продукты\n";
+			cout << "Продукты";
 		else if (line[4] == '1')
-			cout << "Мясные изделия\n";
+			cout << "Мясные изделия";
 		else if (line[4] == '2')
-			cout << "Алкоголь\n";
+			cout << "Алкоголь";
 		else if (line[4] == '3') 
-			cout << "Табак\n";
+			cout << "Табак";
 		else if (line[4] == '4') 
-			cout << "Непродовальственные\n";
+			cout << "Непродовальственные";
 		else if (line[4] == '5') 
-			cout << "Топливо\n";
+			cout << "Топливо";
 		else if (line[4] == '6') 
-			cout << "Одежда\n";
+			cout << "Одежда";
 		else if (line[4] == '7') 
-			cout << "Электротовары\n";
+			cout << "Электротовары";
 		else if (line[4] == '8') 
-			cout << "Парфюмерия\n";
+			cout << "Парфюмерия";
 
-		cout << "Количество товара: " << GetValueOfProducts(line) << endl;
-		cout << "===========\n";
+		cout << "\t\t";
+
+		cout <<  GetValueOfProducts(line) << endl;
+		cout << "====================================================================================================\n";
 	}
 
 	virtual void UserMenu() = 0;
