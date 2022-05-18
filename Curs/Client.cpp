@@ -102,7 +102,7 @@ void Client::ShowOperationsMenu()
             "3.Составить заявку на вывоз\n"
             "4.Найти заявку\n"
             "5.Отменить заявку\n"
-            "6. Отсортировать операции\n"
+            "6.Применить фильтр поиска\n"
             "0.Назад\n"
             "Выберите пункт меню: ";
         std::cin >> choice;
@@ -127,8 +127,7 @@ void Client::ShowOperationsMenu()
             CancelTheOperation();
             break;
         case 6:
-            //Sort by value of products, not changing file
-
+            ShowSearchFilterMenu();
             break;
         case 0:
             return;
@@ -251,6 +250,295 @@ void Client::CancelTheOperation()
     }
     file.close();
     system("pause");
+}
+
+
+////True - count up number, False - below number
+//void Client::GetSearchFilterProductResult(int number, bool choice)
+//{
+//    string line;
+//    ifstream file;
+//
+//    file.open("Operations.txt", ios::app);
+//
+//
+//    if (choice) {
+//        for (int i = 0; file.peek() != EOF; i++) {
+//            getline(file, line);
+//            if (GetLogin() == FindClientName(line.c_str())) {
+//                if  (GetValueOfProducts(line.c_str())) {
+//                    GetOperationInfo(line.c_str());
+//                }
+//            }
+//        }
+//    }
+//
+//    else {
+//        for (int i = 0; file.peek() != EOF; i++) {
+//            getline(file, line);
+//            if (GetLogin() == FindClientName(line.c_str())) {
+//                if (to_string(number) > GetValueOfProducts(line.c_str())) {
+//                    GetOperationInfo(line.c_str());
+//                }
+//            }
+//        }
+//    }
+//    system("pause");
+//    file.close();
+//}
+
+//void Client::ShowFilterProductCounterMenu()
+//{
+//    int choice;
+//    int number;
+//    while (true)
+//    {
+//        std::cout <<
+//            "1.Количество товара меньше чем выбранное значение\n"
+//            "2.Количество товара больше чем выбранное значение\n"
+//            "0.Назад\n"
+//            "Выберите пункт меню: ";
+//        cin >> choice;
+//        system("cls");
+//
+//        switch (choice)
+//        {
+//        case 1:
+//            cout << "Введите граничное число: ";
+//            cin >> number;
+//            GetSearchFilterProductResult(number, false);
+//            break;
+//        case 2:
+//            cout << "Введите граничное число: ";
+//            cin >> number;
+//            GetSearchFilterProductResult(number, true);
+//            break;
+//        case 0:
+//            return;
+//        default:
+//            break;
+//        }
+//    }
+//}
+
+
+
+
+
+
+void Client::GetDirectionResult(string direction)
+{
+    string line;
+    ifstream file;
+
+    file.open("Operations.txt", ios::app);
+
+    for (int i = 0; file.peek() != EOF; i++) {
+        getline(file, line);
+        if (GetLogin() == FindClientName(line.c_str())) {
+            if (GetDirectionOfOperation(line.c_str()) == direction) {
+                GetOperationInfo(line.c_str());
+            }
+        }
+    }
+    system("pause");
+}
+
+void Client::ShowOperationDirectionFilterMenu()
+{
+    int choice;
+    while (true)
+    {
+        //system("cls");
+        std::cout <<
+            "1.Рассмотреть заявки на вывоз\n"
+            "2.Рассмотреть заявки на ввоз\n"
+            "0.Назад\n"
+            "Выберите пункт меню: ";
+        std::cin >> choice;
+
+        system("cls");
+
+        switch (choice)
+        {
+        case 1:
+            GetDirectionResult("0");
+            break;
+        case 2:
+            GetDirectionResult("1");
+            break;
+        case 0:
+            return;
+        default:
+            break;
+        }
+    }
+}
+
+
+void Client::GetStatusResult(string status)
+{
+    string line;
+    ifstream file;
+
+    file.open("Operations.txt", ios::app);
+
+    for (int i = 0; file.peek() != EOF; i++) {
+        getline(file, line);
+        if (GetLogin() == FindClientName(line.c_str())) {
+            if (GetStatusOfOperation(line.c_str()) == status) {
+                GetOperationInfo(line.c_str());
+            }
+        }
+    }
+    system("pause");
+}
+
+void Client::ShowStatusSearchFilter()
+{
+    int choice;
+    while (true)
+    {
+        std::cout <<
+            "1.Просмотреть принятые заявки\n"
+            "2.Просмотреть отклонённые заявки\n"
+            "3.Посмотреть не рассмотренные заявки\n"
+            "0.Назад\n"
+            "Выберите пункт меню: ";
+        std::cin >> choice;
+
+        system("cls");
+
+        switch (choice)
+        {
+        case 1:
+            GetStatusResult("1");
+            break;
+        case 2:
+            GetStatusResult("2");
+            break;
+        case 3:
+            GetStatusResult("0");
+            break;
+        case 0:
+            return;
+        default:
+            break;
+        }
+    }
+}
+
+
+void Client::GetNameResult(string name)
+{
+    string line;
+    ifstream file;
+
+    file.open("Operations.txt", ios::app);
+
+    for (int i = 0; file.peek() != EOF; i++) {
+        getline(file, line);
+        if (GetLogin() == FindClientName(line.c_str())) {
+            if (GetIDOfProduct(line.c_str()) == name) {
+                GetOperationInfo(line.c_str());
+            }
+        }
+    }
+    system("pause");
+}
+
+void Client::ShowNameSearchFilter()
+{
+    int choice;
+    while (true)
+    {
+        std::cout <<
+            "1. Продукты\n"
+            "2. Мясные изделия\n"
+            "3. Алкоголь\n"
+            "4. Табак\n"
+            "5. Непродовольственные\n"
+            "6. Топливо\n"
+            "7. Одежда\n"
+            "8. Электротовары\n"
+            "9. Парфюмерия\n"
+            "0.Назад\n"
+            "Выберите пункт меню: ";
+        std::cin >> choice;
+
+        system("cls");
+
+        switch (choice)
+        {
+        //I HATE MY LIFE
+        case 1:
+            GetNameResult("0");
+            break;
+        case 2:
+            GetNameResult("1");
+            break;
+        case 3:
+            GetNameResult("2");
+            break;
+        case 4:
+            GetNameResult("3");
+            break;
+        case 5:
+            GetNameResult("4");
+            break;
+        case 6:
+            GetNameResult("5");
+            break;
+        case 7:
+            GetNameResult("6");
+            break;
+        case 8:
+            GetNameResult("7");
+            break;
+        case 9:
+            GetNameResult("8");
+            break;
+        case 0:
+            return;
+        default:
+            break;
+        }
+    }
+}
+
+
+void Client::ShowSearchFilterMenu()
+{
+    int choice;
+    while (true)
+    {
+        std::cout <<
+            "1.Применить фильтр для ввоза/вывоза заявок\n"
+            "2.Применить фильтр для статуса заявок\n"
+            "3.Применить фильтр для наименования товара в заявке\n"
+            "0.Назад\n"
+            "Выберите пункт меню: ";
+        std::cin >> choice;
+
+        system("cls");
+
+        switch (choice)
+        {
+        case 1:
+            ShowOperationDirectionFilterMenu();
+            break;
+        case 2:
+            ShowStatusSearchFilter();
+            break;
+        case 3:
+            ShowNameSearchFilter();
+            break;
+        case 0:
+            return;
+        default:
+            break;
+        }
+    }
 }
 
 

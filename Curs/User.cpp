@@ -25,6 +25,7 @@ bool User::IsUserInSystem()
 	return _isLoggedIn;
 }
 
+
 int User::GetCountOfUsers(string fileName)
 {
 	string line;
@@ -38,4 +39,25 @@ int User::GetCountOfUsers(string fileName)
 	}
 	file.close();
 	return counter;
+}
+
+string User::GetStatusOfOperation(const char* line)
+{
+	string word;
+	word += line[2];
+	return word;
+}
+
+string User::GetIDOfProduct(const char* line)
+{
+	string word;
+	word += line[4];
+	return word;
+}
+
+string User::GetDirectionOfOperation(const char* line)
+{
+	string word;
+	word += line[0];
+	return word;
 }

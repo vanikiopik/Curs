@@ -175,6 +175,11 @@ public:
 		return atoi(temp.c_str()) + 1;
 	}
 
+	string GetStatusOfOperation(const char* line);
+
+	string GetIDOfProduct(const char* line);
+
+	string GetDirectionOfOperation(const char* line);
 
 	void GetOperationInfo(const char* line) {
 		cout << "ID Заказа: " << GetIDOfOrder(line) << endl;

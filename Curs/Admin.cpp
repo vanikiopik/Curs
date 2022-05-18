@@ -135,6 +135,7 @@ void Admin::ManageToOperations()
             break;
         case 4:
             //Sort txt file by value of products
+            SortElements();
             break;
         case 0:
             return;
@@ -220,6 +221,37 @@ void Admin::ShowClientOperations()
     }
     system("pause");
     file.close();
+}
+
+void Admin::SortElements()
+{
+    list <string> ListOfOperations;
+    
+    string line;
+    ifstream file;
+
+
+    file.open("Operations.txt", ios::app);
+
+    for (int i = 0; file.peek() != EOF; i++) {
+        getline(file, line);
+        ListOfOperations.push_back(line);
+    }
+    file.close();
+
+    string temp = "0";
+
+    for (int i = 0; i < ListOfOperations.size(); i++) {
+        for (int j = 1; j < ListOfOperations.size(); j++) {
+           // ListOfOperations.swap();
+        }
+    }
+
+
+    for (auto name : ListOfOperations) {
+        cout << name << endl;
+    }
+    system("pause");
 }
 
 //Confirm or reject client operations

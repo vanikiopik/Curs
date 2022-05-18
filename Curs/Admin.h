@@ -22,6 +22,8 @@ public:
 	void ShowAllAvailableOperations();
 	void ShowClientOperations();
 
+	void SortElements();
+
 	void ReviseClientOperation();
 
 	string GetStatusOfOperations();
