@@ -1,7 +1,7 @@
 #include "Menus.h"
 
 
-void cast::LoginMenu(User* user)
+void cast::LoginMenu(shared_ptr<User> user)
 {
 	user->Login();
 	if (user->IsUserInSystem()) {

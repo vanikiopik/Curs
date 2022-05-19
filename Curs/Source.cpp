@@ -116,7 +116,7 @@ void Register() {
 
 void ShowMainMenu() {
 	int choice;
-	User* user = nullptr;
+	shared_ptr<User> user = nullptr;
 
 
 	while (true)
@@ -134,12 +134,12 @@ void ShowMainMenu() {
 		switch (choice)
 		{
 		case 1:
-			user = new Client();
+			user = shared_ptr<User>(new Client());
 			LoginMenu(user);
 			user = nullptr;
 			break;
 		case 2:
-			user = new Admin();
+			user = shared_ptr<User>(new Admin());
 			LoginMenu(user);
 			user = nullptr;
 			break;

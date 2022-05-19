@@ -5,6 +5,6 @@
 
 namespace cast
 {
-	void LoginMenu(User* user);
+	void LoginMenu(shared_ptr<User> user);
 };
 
