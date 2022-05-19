@@ -115,7 +115,7 @@ void Admin::ManageToOperations()
             "1.Показать все операции\n"
             "2.Применить фильтр поиска\n"
             "3.Рассмотреть операции пользователя\n"
-            "4.Отсортировать операции(NOT WORKING)\n"
+            "4.Отсортировать операции\n"
             "0. Назад\n"
             "Выберите пункт меню: ";
         std::cin >> choice;
@@ -128,14 +128,14 @@ void Admin::ManageToOperations()
             ShowAllAvailableOperations();
             break;
         case 2:
-            
+
             break;
         case 3:
             ReviseClientOperation();
             break;
         case 4:
             //Sort txt file by value of products
-            SortElements();
+            ShowSortingMenu();
             break;
         case 0:
             return;
@@ -223,35 +223,79 @@ void Admin::ShowClientOperations()
     file.close();
 }
 
-void Admin::SortElements()
+void Admin::SortElements(int choice)
 {
     list <string> ListOfOperations;
-    
+    map <int, string> mapOper;
+
     string line;
     ifstream file;
-
+    fstream out;
 
     file.open("Operations.txt", ios::app);
 
-    for (int i = 0; file.peek() != EOF; i++) {
-        getline(file, line);
-        ListOfOperations.push_back(line);
+    if (choice == 1) {
+
+        for (int i = 0; file.peek() != EOF; i++) {
+            getline(file, line);
+            mapOper[GetValueOfProducts(line.c_str())] = line;
+        }
+        file.close();
+    }
+
+    else if (choice == 2) {
+        for (int i = 0; file.peek() != EOF; i++) {
+            getline(file, line);
+            mapOper[GetIDOfProductInt(line.c_str())] = line;
+        }
+        file.close();
+    }
+    
+    for (auto& name : mapOper) {
+        cout << name.second;
+        cout << "\n";
+    }
+
+    out.open("test.txt");
+
+    for (auto& name : mapOper) {
+        out << name.second;
+        out << "\n";
     }
     file.close();
+    
+    system("pause");
+}
 
-    string temp = "0";
 
-    for (int i = 0; i < ListOfOperations.size(); i++) {
-        for (int j = 1; j < ListOfOperations.size(); j++) {
-           // ListOfOperations.swap();
+void Admin::ShowSortingMenu()
+{
+    int choice;
+    
+    while (true) 
+    {
+        system("cls");
+        cout << "!!!Сортировка происхоит по возрастанию!!!\n";
+        cout << "1.Сортировать по количеству товара\n";
+        cout << "2.Сортировать по названию товара(не работает, нельзя делать дубликаты!!!!)\n"; 
+        cout << "0. Назад\n";
+        cout << "Выберите пункт меню: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            SortElements(choice);
+            break;
+        case 2:
+            SortElements(choice);
+            break;
+        case 0:
+            return;
+        default:
+            break;
         }
     }
-
-
-    for (auto name : ListOfOperations) {
-        cout << name << endl;
-    }
-    system("pause");
 }
 
 //Confirm or reject client operations

@@ -55,6 +55,13 @@ string User::GetIDOfProduct(const char* line)
 	return word;
 }
 
+int User::GetIDOfProductInt(const char* line)
+{
+	string word;
+	word += line[4];
+	return stoi(word);
+}
+
 string User::GetDirectionOfOperation(const char* line)
 {
 	string word;

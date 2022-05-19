@@ -22,7 +22,10 @@ public:
 	void ShowAllAvailableOperations();
 	void ShowClientOperations();
 
-	void SortElements();
+
+	void SortElements(int choice);
+	void ShowSortingMenu();
+
 
 	void ReviseClientOperation();
 

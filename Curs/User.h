@@ -122,7 +122,7 @@ public:
 		return word;
 	}
 
-	string GetValueOfProducts(const char* line) {
+	int GetValueOfProducts(const char* line) {
 		string word;
 		int countStarting = 6;
 
@@ -130,8 +130,10 @@ public:
 			word += line[countStarting];
 			countStarting++;
 		}
-		return word;
+		return stoi(word);
 	}
+
+
 
 	string GetIDOfOrder(const char* line) {
 		string word;
@@ -179,6 +181,8 @@ public:
 
 	string GetIDOfProduct(const char* line);
 
+	int GetIDOfProductInt(const char* line);
+
 	string GetDirectionOfOperation(const char* line);
 
 	void GetOperationInfo(const char* line) {
@@ -211,25 +215,23 @@ public:
 
 		//I WANNA DIE
 		if (line[4] == '0') 
-			cout << "Продукты";
+			cout << "Продукты\t\t";
 		else if (line[4] == '1')
-			cout << "Мясные изделия";
+			cout << "Мясные изделия\t\t";
 		else if (line[4] == '2')
-			cout << "Алкоголь";
+			cout << "Алкоголь\t\t";
 		else if (line[4] == '3') 
-			cout << "Табак";
+			cout << "Табак\t\t\t";
 		else if (line[4] == '4') 
-			cout << "Непродовальственные";
+			cout << "Непродовольственные\t";
 		else if (line[4] == '5') 
-			cout << "Топливо";
+			cout << "Топливо\t\t\t";
 		else if (line[4] == '6') 
-			cout << "Одежда";
+			cout << "Одежда\t\t";
 		else if (line[4] == '7') 
-			cout << "Электротовары";
+			cout << "Электротовары\t\t";
 		else if (line[4] == '8') 
-			cout << "Парфюмерия";
-
-		cout << "\t\t";
+			cout << "Парфюмерия\t\t";
 
 		cout <<  GetValueOfProducts(line) << endl;
 		cout << "====================================================================================================\n";

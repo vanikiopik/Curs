@@ -138,6 +138,7 @@ void Client::ShowOperationsMenu()
 }
 
 
+
 void Client::FindClientOperations()
 {
     ifstream file;
