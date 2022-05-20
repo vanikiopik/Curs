@@ -77,7 +77,7 @@ public:
 		ifstream file;
 
 		file.open("Users.txt", ios::app);
-		cout << "Enter login: "; cin >> login;
+		cout << "Введите логин: "; cin >> login;
 
 
 		while (getline(file, line)) {
@@ -86,7 +86,7 @@ public:
 
 			if (login == userLogin) {
 				while (true) {
-					cout << "Enter the password: ";
+					cout << "Введите пароль: ";
 					cin >> password;
 					if (MakePassword(password) == userPassword) {
 						SetLogin(login);
@@ -95,7 +95,7 @@ public:
 						break;
 					}
 					else {
-						cout << "Try again\n";
+						cout << "Ошибка. Повторите попытку\n";
 					}
 				}
 			}
@@ -185,10 +185,11 @@ public:
 
 	string GetDirectionOfOperation(const char* line);
 
-	void GetOperationInfo(const char* line) {
-
-
+	void ShowTableHeader() {
 		cout << "ID Заказа\t" << "Тип сделки\t" << "Статус заявки\t" << "Название товарав\t" << "Количество товара\n";
+	}
+
+	void GetOperationInfo(const char* line) {
 
 		cout << GetIDOfOrder(line) << "\t\t";
 
@@ -205,7 +206,7 @@ public:
 			cout << "Не рассмотрена";
 		}
 		else if (line[2] == '1') {
-			cout << "Принята";
+			cout << "Принята\t";
 		}
 		else if (line[2] == '2') {
 			cout << "Отклонена";

@@ -144,8 +144,8 @@ void Client::FindClientOperations()
     ifstream file;
     string line;
 
+    ShowTableHeader();
     file.open("Operations.txt", ios::app);
-
     while (getline(file, line)) {
         if (GetLogin() == FindClientName(line.c_str())) {
             GetOperationInfo(line.c_str());
@@ -167,6 +167,7 @@ void Client::FindOperation()
     cout << "¬ведите ID за€вки: ";
     cin >> number;
 
+    ShowTableHeader();
     while (getline(file, line)) {
         if (number == GetIDOfOrder(line.c_str())) {
             if (GetLogin() == FindClientName(line.c_str())) {
@@ -331,6 +332,7 @@ void Client::GetDirectionResult(string direction)
 
     file.open("Operations.txt", ios::app);
 
+    ShowTableHeader();
     for (int i = 0; file.peek() != EOF; i++) {
         getline(file, line);
         if (GetLogin() == FindClientName(line.c_str())) {
@@ -381,6 +383,7 @@ void Client::GetStatusResult(string status)
 
     file.open("Operations.txt", ios::app);
 
+    ShowTableHeader();
     for (int i = 0; file.peek() != EOF; i++) {
         getline(file, line);
         if (GetLogin() == FindClientName(line.c_str())) {
@@ -434,6 +437,7 @@ void Client::GetNameResult(string name)
 
     file.open("Operations.txt", ios::app);
 
+    ShowTableHeader();
     for (int i = 0; file.peek() != EOF; i++) {
         getline(file, line);
         if (GetLogin() == FindClientName(line.c_str())) {

@@ -69,7 +69,7 @@ void Login(){
 	string line;
 
 	file.open("Users.txt", ios::app);
-	cout << "Enter login: "; cin >> login; cout << endl;
+	cout << "Введите логин: "; cin >> login; cout << endl;
 
 
 	while (getline(file, line)) {
@@ -78,14 +78,13 @@ void Login(){
 
 		if (login == userLogin) {
 			while (true) {
-				cout << "Enter the password: ";
+				cout << "Введите пароль: ";
 				cin >> password;
 				if (MakePassword(password) == userPassword) {
-					cout << "You are logged in\n";
 					break;
 				}
 				else {
-					cout << "Try again\n";
+					cout << "Ошибка. Повторите поптку.\n";
 				}
 			}
 		}

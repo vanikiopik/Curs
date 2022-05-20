@@ -8,7 +8,7 @@ void Admin::Login()
     ifstream file;
 
     file.open("Admins.txt", ios::app);
-    cout << "Enter login: "; cin >> login;
+    cout << "Введите логин: "; cin >> login;
 
 
     while (getline(file, line)) {
@@ -17,7 +17,7 @@ void Admin::Login()
 
         if (login == userLogin) {
             while (true) {
-                cout << "Enter the password: ";
+                cout << "Введите пароль: ";
                 cin >> password;
                 if (MakePassword(password) == userPassword) {
                     SetLogin(login);
@@ -26,7 +26,7 @@ void Admin::Login()
                     break;
                 }
                 else {
-                    cout << "Try again\n";
+                    cout << "Ошибка. Повторите попытку.\n";
                 }
             }
         }
@@ -192,6 +192,7 @@ void Admin::ShowAllAvailableOperations()
 
     file.open("Operations.txt", ios::app);
 
+    ShowTableHeader();
     while (file.peek() != EOF) {
         getline(file, line);
         cout << "Client name: " << FindClientName(line.c_str()) << endl;
@@ -213,6 +214,7 @@ void Admin::ShowClientOperations()
 
     file.open("Operations.txt", ios::app);
 
+    ShowTableHeader();
     while (file.peek() != EOF) {
         getline(file, line);
         if (login == FindClientName(line.c_str())) {
@@ -226,7 +228,7 @@ void Admin::ShowClientOperations()
 void Admin::SortElements(int choice)
 {
     list <string> ListOfOperations;
-    map <int, string> mapOper;
+    multimap <int, string> mapOper;
 
     string line;
     ifstream file;
@@ -238,15 +240,15 @@ void Admin::SortElements(int choice)
 
         for (int i = 0; file.peek() != EOF; i++) {
             getline(file, line);
-            mapOper[GetValueOfProducts(line.c_str())] = line;
+            mapOper.emplace(GetValueOfProducts(line.c_str()), line);
         }
         file.close();
     }
-
+      
     else if (choice == 2) {
         for (int i = 0; file.peek() != EOF; i++) {
             getline(file, line);
-            mapOper[GetIDOfProductInt(line.c_str())] = line;
+            mapOper.emplace(GetIDOfProductInt(line.c_str()), line);
         }
         file.close();
     }
@@ -277,7 +279,7 @@ void Admin::ShowSortingMenu()
         system("cls");
         cout << "!!!Сортировка происхоит по возрастанию!!!\n";
         cout << "1.Сортировать по количеству товара\n";
-        cout << "2.Сортировать по названию товара(не работает, нельзя делать дубликаты!!!!)\n"; 
+        cout << "2.Сортировать по названию товара\n"; 
         cout << "0. Назад\n";
         cout << "Выберите пункт меню: ";
         cin >> choice;
@@ -297,6 +299,7 @@ void Admin::ShowSortingMenu()
         }
     }
 }
+
 
 //Confirm or reject client operations
 void Admin::ReviseClientOperation()
@@ -342,6 +345,7 @@ void Admin::ReviseClientOperation()
 
 
     //Changing the decision's status: 1 - CONFIRM, 2 - REJECT
+    ShowTableHeader();
     for (auto &name : CurrentClientOperations) {
         GetOperationInfo(name.c_str());
 

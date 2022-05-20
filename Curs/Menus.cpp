@@ -8,7 +8,7 @@ void cast::LoginMenu(shared_ptr<User> user)
 		user->UserMenu();
 	}
 	else {
-		cout << "User doesn't exist\n";
+		cout << "Пользователь не существует.\n";
 	}
 	system("pause");
 }
