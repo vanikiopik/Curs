@@ -162,19 +162,19 @@ public:
 	int GetLastOrderID() {
 		string line;
 		ifstream file;
-		string temp = "-1";
+		int temp = -1;
 
 		file.open("Operations.txt", ios::app);
 
 		while (file.peek() != EOF) {
 			getline(file, line);
-			if (GetIDOfOrder(line.c_str()) > temp) {
-				temp = GetIDOfOrder(line.c_str());
+			if (stoi(GetIDOfOrder(line.c_str())) > temp) {
+				
+				temp = stoi(GetIDOfOrder(line.c_str()));
 			}
 		}
 		file.close();
-		cout << temp;
-		return atoi(temp.c_str()) + 1;
+		return temp + 1;
 	}
 
 	string GetStatusOfOperation(const char* line);
@@ -215,23 +215,23 @@ public:
 		cout << "\t";
 
 		//I WANNA DIE
-		if (line[4] == '0') 
+		if (line[4] == '1') 
 			cout << "Продукты\t\t";
-		else if (line[4] == '1')
-			cout << "Мясные изделия\t\t";
 		else if (line[4] == '2')
+			cout << "Мясные изделия\t\t";
+		else if (line[4] == '3')
 			cout << "Алкоголь\t\t";
-		else if (line[4] == '3') 
-			cout << "Табак\t\t\t";
 		else if (line[4] == '4') 
-			cout << "Непродовольственные\t";
+			cout << "Табак\t\t\t";
 		else if (line[4] == '5') 
-			cout << "Топливо\t\t\t";
+			cout << "Непродовольственные\t";
 		else if (line[4] == '6') 
-			cout << "Одежда\t\t";
+			cout << "Топливо\t\t\t";
 		else if (line[4] == '7') 
-			cout << "Электротовары\t\t";
+			cout << "Одежда\t\t";
 		else if (line[4] == '8') 
+			cout << "Электротовары\t\t";
+		else if (line[4] == '9') 
 			cout << "Парфюмерия\t\t";
 
 		cout <<  GetValueOfProducts(line) << endl;

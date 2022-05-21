@@ -1,5 +1,6 @@
 #include "Client.h"
 
+
 void Client::UserMenu()
 {
     int choice;
@@ -10,16 +11,15 @@ void Client::UserMenu()
             "1.Показать персональную информацию\n"
             "2.Таблица процентов на сборы\n"
             "3.Операции\n"
-            "0. Назад\n"
-            "Выберите пункт меню: ";
-        std::cin >> choice;
+            "0. Назад\n";
+            choice = IntInput("Выберите пункт меню: ");
 
         system("cls");
 
         switch (choice)
         {
         case 1:
-            cout << "Login: " << GetLogin() << "\n| Password: " << GetPassword() << endl;
+            cout << "Логин: " << GetLogin() << " | Пароль: " << GetPassword() << endl;
             break;
         case 2:
             ShowFeesTable();
@@ -45,9 +45,8 @@ void Client::ShowFeesTable()
         std::cout <<
             "1.Показать проценты на ввоз товаров\n"
             "2.Показать проценты на вывоз товаров\n"
-            "0. Назад\n"
-            "Выберите: ";
-        std::cin >> choice;
+            "0. Назад\n";
+            choice = IntInput("Выберите пункт меню: ");
 
         system("cls");
 
@@ -55,30 +54,30 @@ void Client::ShowFeesTable()
         {
         case 1:
             cout << "ВВОЗ\n"
-                "Номер\tНаименование\t\tКатегория\t\tПроцент за ед.\n"
-                "1\tПродукты\t\tПродукты\t\t7%\n"
-                "2\tМясные изделия\t\tПродукты\t\t7% +3%\n"
-                "3\tАлкоголь\t\tПродукты\t\t7% +5%\n"
-                "4\tТабак\t\t\tПродукты\t\t7% +8%\n"
-                "5\tНепродовольствие\tНепродовольствие\t15%\n"
-                "6\tТопливо\t\t\tНепродовольствие\t15% +10%\n"
-                "7\tОдежда\t\t\tНепродовольствие\t15% +3%\n"
-                "8\tЭлектротовары\t\tНепродовольствие\t15% +5%\n"
-                "9\tПарфюмерия\t\tНепродовольствие\t15% +7%\n";
+                "Номер\tНаименование\t\tКатегория\t\t\n"
+                "1\tПродукты\t\tПродукты\t\t\n"
+                "2\tМясные изделия\t\tПродукты\t\t\n"
+                "3\tАлкоголь\t\tПродукты\t\t\n"
+                "4\tТабак\t\t\tПродукты\t\t\n"
+                "5\tНепродовольствие\tНепродовольствие\t\n"
+                "6\tТопливо\t\t\tНепродовольствие\t\n"
+                "7\tОдежда\t\t\tНепродовольствие\t\n"
+                "8\tЭлектротовары\t\tНепродовольствие\t\n"
+                "9\tПарфюмерия\t\tНепродовольствие\t\n";
             system("pause");
             break;
         case 2:
             cout << "ВЫВОЗ\n"
-                "Номер\tНаименование\t\tКатегория\t\tПроцент за ед.\n"
-                "1\tПродукты\t\tПродукты\t\t10%\n"
-                "2\tМясные изделия\t\tПродукты\t\t10% +7%\n"
-                "3\tАлкоголь\t\tПродукты\t\t10% +10%\n"
-                "4\tТабак\t\t\tПродукты\t\t10% +13%\n"
-                "5\tНепродовольствие\tНепродовольствие\t20%\n"
-                "6\tТопливо\t\t\tНепродовольствие\t20% +15%\n"
-                "7\tОдежда\t\t\tНепродовольствие\t20% +6%\n"
-                "8\tЭлектротовары\t\tНепродовольствие\t20% +9%\n"
-                "9\tПарфюмерия\t\tНепродовольствие\t20% +10%\n";
+                "Номер\tНаименование\t\tКатегория\t\t\n"
+                "1\tПродукты\t\tПродукты\t\t\n"
+                "2\tМясные изделия\t\tПродукты\t\t\n"
+                "3\tАлкоголь\t\tПродукты\t\t\n"
+                "4\tТабак\t\t\tПродукты\t\t\n"
+                "5\tНепродовольствие\tНепродовольствие\t\n"
+                "6\tТопливо\t\t\tНепродовольствие\t\n"
+                "7\tОдежда\t\t\tНепродовольствие\t\n"
+                "8\tЭлектротовары\t\tНепродовольствие\t\n"
+                "9\tПарфюмерия\t\tНепродовольствие\t\n";
             system("pause");
             break;
         case 0:
@@ -88,6 +87,32 @@ void Client::ShowFeesTable()
         }
     }
 }
+
+//cout << "ВВОЗ\n"
+//"Номер\tНаименование\t\tКатегория\t\tПроцент за ед.\n"
+//"1\tПродукты\t\tПродукты\t\t7%\n"
+//"2\tМясные изделия\t\tПродукты\t\t7% +3%\n"
+//"3\tАлкоголь\t\tПродукты\t\t7% +5%\n"
+//"4\tТабак\t\t\tПродукты\t\t7% +8%\n"
+//"5\tНепродовольствие\tНепродовольствие\t15%\n"
+//"6\tТопливо\t\t\tНепродовольствие\t15% +10%\n"
+//"7\tОдежда\t\t\tНепродовольствие\t15% +3%\n"
+//"8\tЭлектротовары\t\tНепродовольствие\t15% +5%\n"
+//"9\tПарфюмерия\t\tНепродовольствие\t15% +7%\n";
+//system("pause");
+//break;
+//        case 2:
+//            cout << "ВЫВОЗ\n"
+//                "Номер\tНаименование\t\tКатегория\t\tПроцент за ед.\n"
+//                "1\tПродукты\t\tПродукты\t\t10%\n"
+//                "2\tМясные изделия\t\tПродукты\t\t10% +7%\n"
+//                "3\tАлкоголь\t\tПродукты\t\t10% +10%\n"
+//                "4\tТабак\t\t\tПродукты\t\t10% +13%\n"
+//                "5\tНепродовольствие\tНепродовольствие\t20%\n"
+//                "6\tТопливо\t\t\tНепродовольствие\t20% +15%\n"
+//                "7\tОдежда\t\t\tНепродовольствие\t20% +6%\n"
+//                "8\tЭлектротовары\t\tНепродовольствие\t20% +9%\n"
+//                "9\tПарфюмерия\t\tНепродовольствие\t20% +10%\n";
 
 
 void Client::ShowOperationsMenu()
@@ -103,9 +128,9 @@ void Client::ShowOperationsMenu()
             "4.Найти заявку\n"
             "5.Отменить заявку\n"
             "6.Применить фильтр поиска\n"
-            "0.Назад\n"
-            "Выберите пункт меню: ";
-        std::cin >> choice;
+            "7.Отсортировать операции\n"
+            "0.Назад\n";
+            choice = IntInput("Выберите пункт меню: ");
 
         system("cls");
 
@@ -129,6 +154,9 @@ void Client::ShowOperationsMenu()
         case 6:
             ShowSearchFilterMenu();
             break;
+        case 7:
+            ShowSortingMenu();
+            break;
         case 0:
             return;
         default:
@@ -136,7 +164,6 @@ void Client::ShowOperationsMenu()
         }
     }
 }
-
 
 
 void Client::FindClientOperations()
@@ -155,7 +182,7 @@ void Client::FindClientOperations()
 
 void Client::FindOperation()
 {
-    string number;
+    int number;
 
 
     ifstream file;
@@ -163,20 +190,19 @@ void Client::FindOperation()
 
     file.open("Operations.txt", ios::app);
     
+    number = IntInput("Введите ID заявки : ");
     
-    cout << "Введите ID заявки: ";
-    cin >> number;
-
+    
     ShowTableHeader();
     while (getline(file, line)) {
-        if (number == GetIDOfOrder(line.c_str())) {
+        if (to_string(number) == GetIDOfOrder(line.c_str())) {
             if (GetLogin() == FindClientName(line.c_str())) {
                 GetOperationInfo(line.c_str());
                 system("pause");
                 break;
             }
             else {
-                cout << "Permission denied\n";
+                cout << "Отказано в доступе\n";
                 break;
             }
         }
@@ -198,8 +224,7 @@ void Client::CancelTheOperation()
     ifstream file;
 
     string ID;
-    cout << "Введите ID заявки: ";
-    cin >> ID;
+    ID = IntProductIDInput("Введите ID: ");
 
 
     //Copy all info of operations 
@@ -254,76 +279,73 @@ void Client::CancelTheOperation()
 }
 
 
-////True - count up number, False - below number
-//void Client::GetSearchFilterProductResult(int number, bool choice)
-//{
-//    string line;
-//    ifstream file;
-//
-//    file.open("Operations.txt", ios::app);
-//
-//
-//    if (choice) {
-//        for (int i = 0; file.peek() != EOF; i++) {
-//            getline(file, line);
-//            if (GetLogin() == FindClientName(line.c_str())) {
-//                if  (GetValueOfProducts(line.c_str())) {
-//                    GetOperationInfo(line.c_str());
-//                }
-//            }
-//        }
-//    }
-//
-//    else {
-//        for (int i = 0; file.peek() != EOF; i++) {
-//            getline(file, line);
-//            if (GetLogin() == FindClientName(line.c_str())) {
-//                if (to_string(number) > GetValueOfProducts(line.c_str())) {
-//                    GetOperationInfo(line.c_str());
-//                }
-//            }
-//        }
-//    }
-//    system("pause");
-//    file.close();
-//}
+void Client::SortElements(int choice)
+{
+    multimap <int, string> mapOper;
 
-//void Client::ShowFilterProductCounterMenu()
-//{
-//    int choice;
-//    int number;
-//    while (true)
-//    {
-//        std::cout <<
-//            "1.Количество товара меньше чем выбранное значение\n"
-//            "2.Количество товара больше чем выбранное значение\n"
-//            "0.Назад\n"
-//            "Выберите пункт меню: ";
-//        cin >> choice;
-//        system("cls");
-//
-//        switch (choice)
-//        {
-//        case 1:
-//            cout << "Введите граничное число: ";
-//            cin >> number;
-//            GetSearchFilterProductResult(number, false);
-//            break;
-//        case 2:
-//            cout << "Введите граничное число: ";
-//            cin >> number;
-//            GetSearchFilterProductResult(number, true);
-//            break;
-//        case 0:
-//            return;
-//        default:
-//            break;
-//        }
-//    }
-//}
+    string line;
+    ifstream file;
+
+    file.open("Operations.txt", ios::app);
+
+    if (choice == 1) {
+
+        for (int i = 0; file.peek() != EOF; i++) {
+            getline(file, line);
+            if (GetLogin() == FindClientName(line.c_str())) {
+                mapOper.emplace(GetValueOfProducts(line.c_str()), line);
+            }
+        }
+        file.close();
+    }
+
+    else if (choice == 2) {
+        for (int i = 0; file.peek() != EOF; i++) {
+            getline(file, line);
+            if (GetLogin() == FindClientName(line.c_str())) {
+                mapOper.emplace(GetIDOfProductInt(line.c_str()), line);
+            }
+        }
+        file.close();
+    }
+
+    ShowTableHeader();
+    for (auto& name : mapOper) {
+        GetOperationInfo(name.second.c_str());
+    }
+
+    system("pause");
+}
 
 
+void Client::ShowSortingMenu()
+{
+    int choice;
 
+    while (true)
+    {
+        system("cls");
+        cout << "!!!Сортировка происхоит по возрастанию!!!\n";
+        cout << "1.Сортировать по количеству товара\n";
+        cout << "2.Сортировать по названию товара\n";
+        cout << "0. Назад\n";
+        choice = IntInput("Выберите пункт меню: ");
+
+        switch (choice)
+        {
+        case 1:
+            SortElements(choice);
+            break;
+        case 2:
+            SortElements(choice);
+            break;
+        case 0:
+            return;
+        default:
+            break;
+        }
+    }
+}
 
 void Client::GetDirectionResult(string direction)
 {
@@ -353,9 +375,8 @@ void Client::ShowOperationDirectionFilterMenu()
         std::cout <<
             "1.Рассмотреть заявки на вывоз\n"
             "2.Рассмотреть заявки на ввоз\n"
-            "0.Назад\n"
-            "Выберите пункт меню: ";
-        std::cin >> choice;
+            "0.Назад\n";
+            choice = IntInput("Выберите пункт меню: ");
 
         system("cls");
 
@@ -404,9 +425,8 @@ void Client::ShowStatusSearchFilter()
             "1.Просмотреть принятые заявки\n"
             "2.Просмотреть отклонённые заявки\n"
             "3.Посмотреть не рассмотренные заявки\n"
-            "0.Назад\n"
-            "Выберите пункт меню: ";
-        std::cin >> choice;
+            "0.Назад\n";
+            choice = IntInput("Выберите пункт меню: ");
 
         system("cls");
 
@@ -464,9 +484,8 @@ void Client::ShowNameSearchFilter()
             "7. Одежда\n"
             "8. Электротовары\n"
             "9. Парфюмерия\n"
-            "0.Назад\n"
-            "Выберите пункт меню: ";
-        std::cin >> choice;
+            "0.Назад\n";
+            choice = IntInput("Выберите пункт меню: ");
 
         system("cls");
 
@@ -518,9 +537,8 @@ void Client::ShowSearchFilterMenu()
             "1.Применить фильтр для ввоза/вывоза заявок\n"
             "2.Применить фильтр для статуса заявок\n"
             "3.Применить фильтр для наименования товара в заявке\n"
-            "0.Назад\n"
-            "Выберите пункт меню: ";
-        std::cin >> choice;
+            "0.Назад\n";
+            choice = IntInput("Выберите пункт меню: ");
 
         system("cls");
 
@@ -550,14 +568,13 @@ void Client::CreateOperationToImport()
     const int STATUS = 0;
     int ID_tovar;
     int Count;
-    cout << "Введите ID товара: "; cin >> ID_tovar;
-    cout << "\nВведите количество товара: "; cin >> Count;
+    ID_tovar = IntProductIDInput("Введите ID товара: ");
+    Count = IntInput("Введите количество товара: ");
 
     fstream file;
     file.open("Operations.txt", ios::app);
     file << IMPORT << "_" << STATUS << "_" << ID_tovar << "_" << Count << "_" << GetLastOrderID() << " " << this->GetLogin() << "\n";
     file.close();
-
 }
 
 
@@ -567,8 +584,8 @@ void Client::CreateOperationToExport()
     const int STATUS = 0;
     int ID_tovar;
     int Count;
-    cout << "Введите ID товара: "; cin >> ID_tovar;
-    cout << "\nВведите количество товара: "; cin >> Count;
+    ID_tovar = IntProductIDInput("Введите ID товара: ");
+    Count = IntInput("Введите количество товара: ");
 
 
     fstream file;

@@ -43,9 +43,8 @@ void Admin::UserMenu()
             "1.Работа с клиентами\n"
             "2.Работа с операциями\n"
             "3.Показать глобальную статистику\n"
-            "0. Назад\n"
-            "Выберите пункт меню: ";
-        std::cin >> choice;
+            "0. Назад\n";
+            choice = IntInput("Выберите пункт меню: ");
 
         system("cls");
 
@@ -79,10 +78,8 @@ void Admin::ManageToClients()
         std::cout <<
             "1.Просмотреть всех пользователей\n"
             "2.Просмотреть операции выбранного пользователя\n"
-            //"3.Применить фильтр поиска\n"
-            "0. Назад\n"
-            "Выберите пункт меню: ";
-        std::cin >> choice;
+            "0. Назад\n";
+            choice = IntInput("Выберите пункт меню: ");
 
         system("cls");
 
@@ -116,9 +113,8 @@ void Admin::ManageToOperations()
             "2.Применить фильтр поиска\n"
             "3.Рассмотреть операции пользователя\n"
             "4.Отсортировать операции\n"
-            "0. Назад\n"
-            "Выберите пункт меню: ";
-        std::cin >> choice;
+            "0. Назад\n";
+            choice = IntInput("Выберите пункт меню: ");
 
         system("cls");
 
@@ -177,7 +173,7 @@ void Admin::ShowAvailableClients()
 void Admin::ShowAllStatistics()
 {
     cout << "Количество клиентов: " << GetCountOfUsers("Users.txt") << endl;
-    cout << "Количество админитсраторов: " << GetCountOfUsers("Admins.txt") << endl;
+    cout << "Количество админитстраторов: " << GetCountOfUsers("Admins.txt") << endl;
     cout << "Количество всех заявок: " << GetCountOfUsers("Operations.txt") << endl;
     cout << "Принятые / отклоненные / на рассотрении : " << GetStatusOfOperations() << endl;
     system("pause");
@@ -225,6 +221,7 @@ void Admin::ShowClientOperations()
     file.close();
 }
 
+
 void Admin::SortElements(int choice)
 {
     list <string> ListOfOperations;
@@ -252,13 +249,8 @@ void Admin::SortElements(int choice)
         }
         file.close();
     }
-    
-    for (auto& name : mapOper) {
-        cout << name.second;
-        cout << "\n";
-    }
 
-    out.open("test.txt");
+    out.open("Operations.txt");
 
     for (auto& name : mapOper) {
         out << name.second;
@@ -281,8 +273,7 @@ void Admin::ShowSortingMenu()
         cout << "1.Сортировать по количеству товара\n";
         cout << "2.Сортировать по названию товара\n"; 
         cout << "0. Назад\n";
-        cout << "Выберите пункт меню: ";
-        cin >> choice;
+        choice = IntInput("Выберите пункт меню: ");
 
         switch (choice)
         {

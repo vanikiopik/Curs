@@ -3,6 +3,9 @@
 #include <iostream>
 #include <fstream>
 #include <list>
+#include "UserInput.h"
+#include <map>
+
 
 class Client : public User
 {
@@ -22,9 +25,8 @@ public:
 
 	void CancelTheOperation();
 
-
-	//void GetSearchFilterProductResult(int number, bool choice);		//True - count up number, False - below number
-	//void ShowFilterProductCounterMenu();
+	void SortElements(int choice);
+	void ShowSortingMenu();
 
 	void GetDirectionResult(string direction);
 	void ShowOperationDirectionFilterMenu();

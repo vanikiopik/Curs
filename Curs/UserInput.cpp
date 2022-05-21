@@ -57,4 +57,32 @@ std::string StringInput(std::string_view message, std::string_view invalidChars)
     }
 }
 
+int IntInput(std::string message)
+{
+    std::cout << message;
+    int a;
+    while (!(std::cin >> a) || (std::cin.peek() != '\n'))
+    {
+        std::cin.clear();
+        while (std::cin.get() != '\n');
+        std::cout << "ќшибка! ¬ведите число." << std::endl;
+    }
+    return a;
+}
 
+
+int IntProductIDInput(std::string message)
+{
+    std::cout << message;
+
+    const int LOWID = 1;
+    const int HIGHID = 9;
+    int a;
+    while (!(std::cin >> a) || (std::cin.peek() != '\n') || a < LOWID || a > HIGHID)
+    {
+        std::cin.clear();
+        while (std::cin.get() != '\n');
+        std::cout << "ќшибка! ¬ведите ID из таблицы " << std::endl;
+    }
+    return a;
+}

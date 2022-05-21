@@ -4,7 +4,7 @@
 #include <list>
 #include <map>
 #include <iterator>
-
+#include "UserInput.h"
 
 class Admin : public User
 {
