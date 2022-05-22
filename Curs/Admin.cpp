@@ -188,7 +188,7 @@ void Admin::ShowAllAvailableOperations()
 
     file.open("Operations.txt", ios::app);
 
-    ShowTableHeader();
+    ShowFeesTableHeader();
     while (file.peek() != EOF) {
         getline(file, line);
         cout << "Client name: " << FindClientName(line.c_str()) << endl;
@@ -210,7 +210,7 @@ void Admin::ShowClientOperations()
 
     file.open("Operations.txt", ios::app);
 
-    ShowTableHeader();
+    ShowFeesTableHeader();
     while (file.peek() != EOF) {
         getline(file, line);
         if (login == FindClientName(line.c_str())) {
@@ -336,7 +336,7 @@ void Admin::ReviseClientOperation()
 
 
     //Changing the decision's status: 1 - CONFIRM, 2 - REJECT
-    ShowTableHeader();
+    ShowFeesTableHeader();
     for (auto &name : CurrentClientOperations) {
         GetOperationInfo(name.c_str());
 

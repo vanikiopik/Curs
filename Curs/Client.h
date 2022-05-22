@@ -16,6 +16,7 @@ public:
 
 
 	void ShowFeesTable();
+	void ShowFeesTable(int table);
 
 	void ShowOperationsMenu();
 
@@ -43,4 +44,7 @@ public:
 
 	void CreateOperationToImport();
 	void CreateOperationToExport();
+
+	float CalculateFullPrice(int ID, int status, int value, float price);
+
 };

@@ -54,30 +54,30 @@ void Client::ShowFeesTable()
         {
         case 1:
             cout << "ВВОЗ\n"
-                "Номер\tНаименование\t\tКатегория\t\t\n"
-                "1\tПродукты\t\tПродукты\t\t\n"
-                "2\tМясные изделия\t\tПродукты\t\t\n"
-                "3\tАлкоголь\t\tПродукты\t\t\n"
-                "4\tТабак\t\t\tПродукты\t\t\n"
-                "5\tНепродовольствие\tНепродовольствие\t\n"
-                "6\tТопливо\t\t\tНепродовольствие\t\n"
-                "7\tОдежда\t\t\tНепродовольствие\t\n"
-                "8\tЭлектротовары\t\tНепродовольствие\t\n"
-                "9\tПарфюмерия\t\tНепродовольствие\t\n";
-            system("pause");
-            break;
+                "Номер\tНаименование\t\tКатегория\t\tПроцент за ед.\n"
+                "1\tПродукты\t\tПродукты\t\t7%\n"
+                "2\tМясные изделия\t\tПродукты\t\t7% +3%\n"
+                "3\tАлкоголь\t\tПродукты\t\t7% +5%\n"
+                "4\tТабак\t\t\tПродукты\t\t7% +8%\n"
+                "5\tНепродовольствие\tНепродовольствие\t15%\n"
+                "6\tТопливо\t\t\tНепродовольствие\t15% +10%\n"
+                "7\tОдежда\t\t\tНепродовольствие\t15% +3%\n"
+                "8\tЭлектротовары\t\tНепродовольствие\t15% +5%\n"
+                "9\tПарфюмерия\t\tНепродовольствие\t15% +7%\n";
+                system("pause");
+                break;
         case 2:
             cout << "ВЫВОЗ\n"
-                "Номер\tНаименование\t\tКатегория\t\t\n"
-                "1\tПродукты\t\tПродукты\t\t\n"
-                "2\tМясные изделия\t\tПродукты\t\t\n"
-                "3\tАлкоголь\t\tПродукты\t\t\n"
-                "4\tТабак\t\t\tПродукты\t\t\n"
-                "5\tНепродовольствие\tНепродовольствие\t\n"
-                "6\tТопливо\t\t\tНепродовольствие\t\n"
-                "7\tОдежда\t\t\tНепродовольствие\t\n"
-                "8\tЭлектротовары\t\tНепродовольствие\t\n"
-                "9\tПарфюмерия\t\tНепродовольствие\t\n";
+                "Номер\tНаименование\t\tКатегория\t\tПроцент за ед.\n"
+                "1\tПродукты\t\tПродукты\t\t10%\n"
+                "2\tМясные изделия\t\tПродукты\t\t10% +7%\n"
+                "3\tАлкоголь\t\tПродукты\t\t10% +10%\n"
+                "4\tТабак\t\t\tПродукты\t\t10% +13%\n"
+                "5\tНепродовольствие\tНепродовольствие\t20%\n"
+                "6\tТопливо\t\t\tНепродовольствие\t20% +15%\n"
+                "7\tОдежда\t\t\tНепродовольствие\t20% +6%\n"
+                "8\tЭлектротовары\t\tНепродовольствие\t20% +9%\n"
+                "9\tПарфюмерия\t\tНепродовольствие\t20% +10%\n";
             system("pause");
             break;
         case 0:
@@ -88,31 +88,42 @@ void Client::ShowFeesTable()
     }
 }
 
-//cout << "ВВОЗ\n"
-//"Номер\tНаименование\t\tКатегория\t\tПроцент за ед.\n"
-//"1\tПродукты\t\tПродукты\t\t7%\n"
-//"2\tМясные изделия\t\tПродукты\t\t7% +3%\n"
-//"3\tАлкоголь\t\tПродукты\t\t7% +5%\n"
-//"4\tТабак\t\t\tПродукты\t\t7% +8%\n"
-//"5\tНепродовольствие\tНепродовольствие\t15%\n"
-//"6\tТопливо\t\t\tНепродовольствие\t15% +10%\n"
-//"7\tОдежда\t\t\tНепродовольствие\t15% +3%\n"
-//"8\tЭлектротовары\t\tНепродовольствие\t15% +5%\n"
-//"9\tПарфюмерия\t\tНепродовольствие\t15% +7%\n";
-//system("pause");
-//break;
-//        case 2:
-//            cout << "ВЫВОЗ\n"
-//                "Номер\tНаименование\t\tКатегория\t\tПроцент за ед.\n"
-//                "1\tПродукты\t\tПродукты\t\t10%\n"
-//                "2\tМясные изделия\t\tПродукты\t\t10% +7%\n"
-//                "3\tАлкоголь\t\tПродукты\t\t10% +10%\n"
-//                "4\tТабак\t\t\tПродукты\t\t10% +13%\n"
-//                "5\tНепродовольствие\tНепродовольствие\t20%\n"
-//                "6\tТопливо\t\t\tНепродовольствие\t20% +15%\n"
-//                "7\tОдежда\t\t\tНепродовольствие\t20% +6%\n"
-//                "8\tЭлектротовары\t\tНепродовольствие\t20% +9%\n"
-//                "9\tПарфюмерия\t\tНепродовольствие\t20% +10%\n";
+void Client::ShowFeesTable(int table)
+{
+    //0 - IMPORT
+    //1 - EXPORT
+    switch (table) {
+    case 1:
+        cout << "ВВОЗ\n"
+            "Номер\tНаименование\t\tКатегория\t\tПроцент за ед.\n"
+            "1\tПродукты\t\tПродукты\t\t7%\n"
+            "2\tМясные изделия\t\tПродукты\t\t7% +3%\n"
+            "3\tАлкоголь\t\tПродукты\t\t7% +5%\n"
+            "4\tТабак\t\t\tПродукты\t\t7% +8%\n"
+            "5\tНепродовольствие\tНепродовольствие\t15%\n"
+            "6\tТопливо\t\t\tНепродовольствие\t15% +10%\n"
+            "7\tОдежда\t\t\tНепродовольствие\t15% +3%\n"
+            "8\tЭлектротовары\t\tНепродовольствие\t15% +5%\n"
+            "9\tПарфюмерия\t\tНепродовольствие\t15% +7%\n";
+        break;
+    case 2:
+        cout << "ВЫВОЗ\n"
+            "Номер\tНаименование\t\tКатегория\t\tПроцент за ед.\n"
+            "1\tПродукты\t\tПродукты\t\t10%\n"
+            "2\tМясные изделия\t\tПродукты\t\t10% +7%\n"
+            "3\tАлкоголь\t\tПродукты\t\t10% +10%\n"
+            "4\tТабак\t\t\tПродукты\t\t10% +13%\n"
+            "5\tНепродовольствие\tНепродовольствие\t20%\n"
+            "6\tТопливо\t\t\tНепродовольствие\t20% +15%\n"
+            "7\tОдежда\t\t\tНепродовольствие\t20% +6%\n"
+            "8\tЭлектротовары\t\tНепродовольствие\t20% +9%\n"
+            "9\tПарфюмерия\t\tНепродовольствие\t20% +10%\n";
+        break;
+    }
+}
+
+
+
 
 
 void Client::ShowOperationsMenu()
@@ -171,7 +182,7 @@ void Client::FindClientOperations()
     ifstream file;
     string line;
 
-    ShowTableHeader();
+    ShowFeesTableHeader();
     file.open("Operations.txt", ios::app);
     while (getline(file, line)) {
         if (GetLogin() == FindClientName(line.c_str())) {
@@ -193,7 +204,7 @@ void Client::FindOperation()
     number = IntInput("Введите ID заявки : ");
     
     
-    ShowTableHeader();
+    ShowFeesTableHeader();
     while (getline(file, line)) {
         if (to_string(number) == GetIDOfOrder(line.c_str())) {
             if (GetLogin() == FindClientName(line.c_str())) {
@@ -224,7 +235,7 @@ void Client::CancelTheOperation()
     ifstream file;
 
     string ID;
-    ID = IntProductIDInput("Введите ID: ");
+    ID = IntPositiveInput("Введите ID: ");
 
 
     //Copy all info of operations 
@@ -245,6 +256,7 @@ void Client::CancelTheOperation()
         if (ID == GetIDOfOrder(line.c_str())) {
             if (GetLogin() == FindClientName(line.c_str())) {
                 positionOfOperation = i;
+                isTrueUser = true;
                 break;
             }
             else {
@@ -255,6 +267,11 @@ void Client::CancelTheOperation()
     }
     file.close();
 
+    if (!isTrueUser) {
+        cout << "ID wasn't found\n";
+        system("pause");
+        return;
+    }
 
     i = 0;
     for (std::list<string>::iterator it = ListOfOperations.begin(); it != ListOfOperations.end(); i++) {
@@ -309,7 +326,7 @@ void Client::SortElements(int choice)
         file.close();
     }
 
-    ShowTableHeader();
+    ShowFeesTableHeader();
     for (auto& name : mapOper) {
         GetOperationInfo(name.second.c_str());
     }
@@ -354,7 +371,7 @@ void Client::GetDirectionResult(string direction)
 
     file.open("Operations.txt", ios::app);
 
-    ShowTableHeader();
+    ShowFeesTableHeader();
     for (int i = 0; file.peek() != EOF; i++) {
         getline(file, line);
         if (GetLogin() == FindClientName(line.c_str())) {
@@ -404,7 +421,7 @@ void Client::GetStatusResult(string status)
 
     file.open("Operations.txt", ios::app);
 
-    ShowTableHeader();
+    ShowFeesTableHeader();
     for (int i = 0; file.peek() != EOF; i++) {
         getline(file, line);
         if (GetLogin() == FindClientName(line.c_str())) {
@@ -457,7 +474,7 @@ void Client::GetNameResult(string name)
 
     file.open("Operations.txt", ios::app);
 
-    ShowTableHeader();
+    ShowFeesTableHeader();
     for (int i = 0; file.peek() != EOF; i++) {
         getline(file, line);
         if (GetLogin() == FindClientName(line.c_str())) {
@@ -568,12 +585,18 @@ void Client::CreateOperationToImport()
     const int STATUS = 0;
     int ID_tovar;
     int Count;
+    float Price;
+
+
+    ShowFeesTable(IMPORT); cout << endl;
+
     ID_tovar = IntProductIDInput("Введите ID товара: ");
-    Count = IntInput("Введите количество товара: ");
+    Count = IntPositiveInput("Введите количество товара: ");
+    Price = FloatMoneyInput("Введите цену товара за одну еденицу: "); //Сделать Input для денег и сделать его float!!!!!
 
     fstream file;
     file.open("Operations.txt", ios::app);
-    file << IMPORT << "_" << STATUS << "_" << ID_tovar << "_" << Count << "_" << GetLastOrderID() << " " << this->GetLogin() << "\n";
+    file << IMPORT << "_" << STATUS << "_" << ID_tovar << "_" << Count << "_" << GetLastOrderID() << "_" << CalculateFullPrice(ID_tovar, IMPORT, Count, Price) << " " << this->GetLogin() << "\n";
     file.close();
 }
 
@@ -584,12 +607,92 @@ void Client::CreateOperationToExport()
     const int STATUS = 0;
     int ID_tovar;
     int Count;
-    ID_tovar = IntProductIDInput("Введите ID товара: ");
-    Count = IntInput("Введите количество товара: ");
+    float Price;
 
+    ShowFeesTable(IMPORT); cout << endl;
+
+    ID_tovar = IntProductIDInput("Введите ID товара: ");
+    Count = IntPositiveInput("Введите количество товара: ");
+    Price = FloatMoneyInput("Введите цену товара за одну еденицу: "); //Сделать Input для денег и сделать его float!!!!!
 
     fstream file;
     file.open("Operations.txt", ios::app);
-    file << IMPORT << "_" << STATUS << "_" << ID_tovar << "_" << Count << "_" << GetLastOrderID() << " " << this->GetLogin() << "\n";
+    file << IMPORT << "_" << STATUS << "_" << ID_tovar << "_" << Count << "_" << GetLastOrderID() << "_" << CalculateFullPrice(ID_tovar, IMPORT, Count, Price) << " " << this->GetLogin() << "\n";
+
     file.close();
+}
+
+//Get ID of product, status of export/import, value of product, price for one peace
+float Client::CalculateFullPrice(int ID, int status, int value, float price)
+{
+    //I LOST MY MIND
+    switch (status) {
+    case 0:
+        switch (ID)
+        {
+        case 1:
+            return value * (price + price * 0.1);
+            break;
+        case 2:
+            return value * (price + price * 0.17);
+            break;
+        case 3:
+            return value * (price + price * 0.2);
+            break;
+        case 4:
+            return value * (price + price * 0.23);
+            break;
+        case 5:
+            return value * (price + price * 0.2);
+            break;
+        case 6:
+            return value * (price + price * 0.35);
+            break;
+        case 7:
+            return value * (price + price * 0.26);
+            break;
+        case 8:
+            return value * (price + price * 0.29);
+            break;
+        case 9:
+            return value * (price + price * 0.30);
+            break;
+        }
+        break;
+
+
+    case 1:
+        switch (ID)
+        {
+        case 1:
+            return value * (price + price * 0.07);
+            break;
+        case 2:
+            return value * (price + price * 0.1);
+            break;
+        case 3:
+            return value * (price + price * 0.12);
+            break;
+        case 4:
+            return value * (price + price * 0.13);
+            break;
+        case 5:
+            return value * (price + price * 0.15);
+            break;
+        case 6:
+            return value * (price + price * 0.25);
+            break;
+        case 7:
+            return value * (price + price * 0.18);
+            break;
+        case 8:
+            return value * (price + price * 0.2);
+            break;
+        case 9:
+            return value * (price + price * 0.22);
+            break;
+        }
+        break;
+    }
+    return 0;
 }

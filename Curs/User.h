@@ -146,6 +146,29 @@ public:
 				underlineCounter++;
 				if (underlineCounter == 4) {
 					j = i + 1;
+					while (line[j] != '_') {
+						word += line[j];
+						j++;
+					}
+				}
+			}
+			i++;
+		}
+		return word;
+	}
+
+
+	string GetMoneyOfOperation(const char* line) {
+		string word;
+		int i = 0;
+		int j = 0;
+		int underlineCounter = 0;
+
+		while (line[i] != ' ') {
+			if (line[i] == '_') {
+				underlineCounter++;
+				if (underlineCounter == 5) {
+					j = i + 1;
 					while (line[j] != ' ') {
 						word += line[j];
 						j++;
@@ -185,8 +208,8 @@ public:
 
 	string GetDirectionOfOperation(const char* line);
 
-	void ShowTableHeader() {
-		cout << "ID Заказа\t" << "Тип сделки\t" << "Статус заявки\t" << "Название товарав\t" << "Количество товара\n";
+	void ShowFeesTableHeader() {
+		cout << "ID Заказа\t" << "Тип сделки\t" << "Статус заявки\t" << "Название товара\t\t" << "Количество товара\t" << "Итоговая стоимость после сборов\n";
 	}
 
 	void GetOperationInfo(const char* line) {
@@ -234,8 +257,9 @@ public:
 		else if (line[4] == '9') 
 			cout << "Парфюмерия\t\t";
 
-		cout <<  GetValueOfProducts(line) << endl;
-		cout << "====================================================================================================\n";
+		cout << GetValueOfProducts(line) << "\t\t\t";
+		cout << GetMoneyOfOperation(line) << endl;
+		cout << "=======================================================================================================================\n";
 	}
 
 	virtual void UserMenu() = 0;

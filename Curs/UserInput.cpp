@@ -70,6 +70,18 @@ int IntInput(std::string message)
     return a;
 }
 
+int IntPositiveInput(std::string message)
+{
+    std::cout << message;
+    int a;
+    while (!(std::cin >> a) || (std::cin.peek() != '\n') || a < 0)
+    {
+        std::cin.clear();
+        while (std::cin.get() != '\n');
+        std::cout << "Ошибка! Введите число." << std::endl;
+    }
+    return a;
+}
 
 int IntProductIDInput(std::string message)
 {
@@ -85,4 +97,22 @@ int IntProductIDInput(std::string message)
         std::cout << "Ошибка! Введите ID из таблицы " << std::endl;
     }
     return a;
+}
+
+
+float FloatMoneyInput(std::string message) {
+    {
+        std::cout << message;
+
+        const int LOWID = 1;
+        const int HIGHID = 9;
+        int a;
+        while (!(std::cin >> a) || (std::cin.peek() != '\n') || a < 0)
+        {
+            std::cin.clear();
+            while (std::cin.get() != '\n');
+            std::cout << "Ошибка! Повторите ввод" << std::endl;
+        }
+        return a;
+    }
 }
