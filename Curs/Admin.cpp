@@ -7,7 +7,7 @@ void Admin::Login()
     string line;
     ifstream file;
 
-    file.open("Admins.txt", ios::app);
+    file.open(AdminsFileName, ios::app);
     cout << "Введите логин: "; cin >> login;
 
 
@@ -150,7 +150,7 @@ void Admin::ShowAvailableClients()
     ifstream file;
 
 
-    file.open("Operations.txt", ios::app);
+    file.open(OperationsFileName, ios::app);
 
     while (file.peek() != EOF) {
         getline(file, line);
@@ -172,9 +172,9 @@ void Admin::ShowAvailableClients()
 
 void Admin::ShowAllStatistics()
 {
-    cout << "Количество клиентов: " << GetCountOfUsers("Users.txt") << endl;
-    cout << "Количество админитстраторов: " << GetCountOfUsers("Admins.txt") << endl;
-    cout << "Количество всех заявок: " << GetCountOfUsers("Operations.txt") << endl;
+    cout << "Количество клиентов: " << GetCountOfUsers(UsersFileName) << endl;
+    cout << "Количество админитстраторов: " << GetCountOfUsers(AdminsFileName) << endl;
+    cout << "Количество всех заявок: " << GetCountOfUsers(OperationsFileName) << endl;
     cout << "Принятые / отклоненные / на рассотрении : " << GetStatusOfOperations() << endl;
     system("pause");
 
@@ -186,7 +186,7 @@ void Admin::ShowAllAvailableOperations()
     string line;
     ifstream file;
 
-    file.open("Operations.txt", ios::app);
+    file.open(OperationsFileName, ios::app);
 
     ShowFeesTableHeader();
     while (file.peek() != EOF) {
@@ -208,7 +208,7 @@ void Admin::ShowClientOperations()
     cout << "Введите логин пользователя: ";
     cin >> login;
 
-    file.open("Operations.txt", ios::app);
+    file.open(OperationsFileName, ios::app);
 
     ShowFeesTableHeader();
     while (file.peek() != EOF) {
@@ -231,7 +231,7 @@ void Admin::SortElements(int choice)
     ifstream file;
     fstream out;
 
-    file.open("Operations.txt", ios::app);
+    file.open(OperationsFileName, ios::app);
 
     if (choice == 1) {
 
@@ -250,7 +250,7 @@ void Admin::SortElements(int choice)
         file.close();
     }
 
-    out.open("Operations.txt");
+    out.open(OperationsFileName);
 
     for (auto& name : mapOper) {
         out << name.second;
@@ -313,7 +313,7 @@ void Admin::ReviseClientOperation()
 
 
     //Copy all info of operations 
-    file.open("Operations.txt", ios::app);
+    file.open(OperationsFileName, ios::app);
 
     for (int i = 0; file.peek() != EOF; i++) {
         getline(file, line);
@@ -323,7 +323,7 @@ void Admin::ReviseClientOperation()
 
 
     //Copy info of current user's operations and remember the position of this client in txt file
-    file.open("Operations.txt", ios::app);
+    file.open(OperationsFileName, ios::app);
 
     for (int i = 0; file.peek() != EOF; i++) {
         getline(file, line);
@@ -360,7 +360,7 @@ void Admin::ReviseClientOperation()
 
 
     //Rewriting the file
-    out.open("Operations.txt");
+    out.open(OperationsFileName);
 
     for (auto &name : ListOfOperations) {  //Go through all operation
         for (auto& numbers : PositionOfClientInFile) {  //If pos same -> change line to CurentClientOperation
@@ -389,7 +389,7 @@ string Admin::GetStatusOfOperations()
     int noStatus = 0;
 
 
-    file.open("Operations.txt", ios::app);
+    file.open(OperationsFileName, ios::app);
     while (file.peek() != EOF) {
         getline(file, line);
         if (line[2] == '0') {

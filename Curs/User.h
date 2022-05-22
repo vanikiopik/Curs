@@ -9,11 +9,15 @@ using namespace std;
 class User
 {
 protected:
+	inline const static string OperationsFileName = "Operations.txt";
+	inline const static string AdminsFileName = "Admins.txt";
+	inline const static string UsersFileName = "Users.txt";
 	string _login;
 	string _password;
 	bool _isLoggedIn = false;
 
 public:
+
 	string GetLogin();
 	string GetPassword();
 
@@ -59,7 +63,7 @@ public:
 	bool IsUserExist(string login) {
 		ifstream file;
 		string line;
-		file.open("Users.txt", ios::app);
+		file.open(UsersFileName, ios::app);
 
 		while (getline(file, line)) {
 			if (login == FindName(line.c_str())) {
@@ -76,7 +80,7 @@ public:
 		string line;
 		ifstream file;
 
-		file.open("Users.txt", ios::app);
+		file.open(UsersFileName, ios::app);
 		cout << "¬ведите логин: "; cin >> login;
 
 
@@ -187,7 +191,7 @@ public:
 		ifstream file;
 		int temp = -1;
 
-		file.open("Operations.txt", ios::app);
+		file.open(OperationsFileName, ios::app);
 
 		while (file.peek() != EOF) {
 			getline(file, line);

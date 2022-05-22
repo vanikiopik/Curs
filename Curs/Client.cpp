@@ -183,7 +183,7 @@ void Client::FindClientOperations()
     string line;
 
     ShowFeesTableHeader();
-    file.open("Operations.txt", ios::app);
+    file.open(OperationsFileName, ios::app);
     while (getline(file, line)) {
         if (GetLogin() == FindClientName(line.c_str())) {
             GetOperationInfo(line.c_str());
@@ -199,7 +199,7 @@ void Client::FindOperation()
     ifstream file;
     string line;
 
-    file.open("Operations.txt", ios::app);
+    file.open(OperationsFileName, ios::app);
     
     number = IntInput("¬ведите ID за€вки : ");
     
@@ -239,7 +239,7 @@ void Client::CancelTheOperation()
 
 
     //Copy all info of operations 
-    file.open("Operations.txt", ios::app);
+    file.open(OperationsFileName, ios::app);
 
     for (int i = 0; file.peek() != EOF; i++) {
         getline(file, line);
@@ -249,7 +249,7 @@ void Client::CancelTheOperation()
 
 
     //Copy info of current operation and remember the position of this in  file
-    file.open("Operations.txt", ios::app);
+    file.open(OperationsFileName, ios::app);
 
     for (int i = 0; file.peek() != EOF; i++) {
         getline(file, line);
@@ -285,7 +285,7 @@ void Client::CancelTheOperation()
     }
 
 
-    out.open("Operations.txt");
+    out.open(OperationsFileName);
 
     //Rewriting the file
     for (auto& name : ListOfOperations) {
@@ -303,7 +303,7 @@ void Client::SortElements(int choice)
     string line;
     ifstream file;
 
-    file.open("Operations.txt", ios::app);
+    file.open(OperationsFileName, ios::app);
 
     if (choice == 1) {
 
@@ -368,8 +368,8 @@ void Client::GetDirectionResult(string direction)
 {
     string line;
     ifstream file;
-
-    file.open("Operations.txt", ios::app);
+    
+    file.open(OperationsFileName, ios::app);
 
     ShowFeesTableHeader();
     for (int i = 0; file.peek() != EOF; i++) {
@@ -419,7 +419,7 @@ void Client::GetStatusResult(string status)
     string line;
     ifstream file;
 
-    file.open("Operations.txt", ios::app);
+    file.open(OperationsFileName, ios::app);
 
     ShowFeesTableHeader();
     for (int i = 0; file.peek() != EOF; i++) {
@@ -472,7 +472,7 @@ void Client::GetNameResult(string name)
     string line;
     ifstream file;
 
-    file.open("Operations.txt", ios::app);
+    file.open(OperationsFileName, ios::app);
 
     ShowFeesTableHeader();
     for (int i = 0; file.peek() != EOF; i++) {
@@ -592,10 +592,10 @@ void Client::CreateOperationToImport()
 
     ID_tovar = IntProductIDInput("¬ведите ID товара: ");
     Count = IntPositiveInput("¬ведите количество товара: ");
-    Price = FloatMoneyInput("¬ведите цену товара за одну еденицу: "); //—делать Input дл€ денег и сделать его float!!!!!
+    Price = FloatMoneyInput("¬ведите цену товара за одну еденицу: ");
 
     fstream file;
-    file.open("Operations.txt", ios::app);
+    file.open(OperationsFileName, ios::app);
     file << IMPORT << "_" << STATUS << "_" << ID_tovar << "_" << Count << "_" << GetLastOrderID() << "_" << CalculateFullPrice(ID_tovar, IMPORT, Count, Price) << " " << this->GetLogin() << "\n";
     file.close();
 }
@@ -613,10 +613,10 @@ void Client::CreateOperationToExport()
 
     ID_tovar = IntProductIDInput("¬ведите ID товара: ");
     Count = IntPositiveInput("¬ведите количество товара: ");
-    Price = FloatMoneyInput("¬ведите цену товара за одну еденицу: "); //—делать Input дл€ денег и сделать его float!!!!!
+    Price = FloatMoneyInput("¬ведите цену товара за одну еденицу: ");
 
     fstream file;
-    file.open("Operations.txt", ios::app);
+    file.open(OperationsFileName, ios::app);
     file << IMPORT << "_" << STATUS << "_" << ID_tovar << "_" << Count << "_" << GetLastOrderID() << "_" << CalculateFullPrice(ID_tovar, IMPORT, Count, Price) << " " << this->GetLogin() << "\n";
 
     file.close();
