@@ -59,8 +59,8 @@ public:
 		return word;
 	}
 
-
-	bool IsUserExist(string login) {
+	template <typename T>
+	T IsUserExist(string login) {
 		ifstream file;
 		string line;
 		file.open(UsersFileName, ios::app);
@@ -208,6 +208,7 @@ public:
 
 	string GetIDOfProduct(const char* line);
 
+	
 	int GetIDOfProductInt(const char* line);
 
 	string GetDirectionOfOperation(const char* line);
