@@ -95,7 +95,6 @@ void Login(){
 void Register() {
 	ofstream in("Users.txt", ios_base::app);
 	if (!in){
-		cout << "fail";
 	}
 
 	string login, password;
@@ -104,7 +103,7 @@ void Register() {
 
 
 	if (IsUserExist(login)) {
-		cout << "That name's already exist. Try again\n";
+		cout << "Это имя уже занято. Повторите ввод\n";
 	}
 	else {
 		in << login << " " << MakePassword(password) << "\n";

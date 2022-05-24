@@ -234,7 +234,7 @@ void Client::CancelTheOperation()
     ofstream out;
     ifstream file;
 
-    string ID;
+    int ID;
     ID = IntPositiveInput("¬ведите ID: ");
 
 
@@ -253,7 +253,7 @@ void Client::CancelTheOperation()
 
     for (int i = 0; file.peek() != EOF; i++) {
         getline(file, line);
-        if (ID == GetIDOfOrder(line.c_str())) {
+        if (to_string(ID) == GetIDOfOrder(line.c_str())) {
             if (GetLogin() == FindClientName(line.c_str())) {
                 positionOfOperation = i;
                 isTrueUser = true;

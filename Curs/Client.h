@@ -9,8 +9,6 @@
 
 class Client : public User
 {
-private:
-
 public:
 	void UserMenu() override;
 
