@@ -65,6 +65,7 @@ public:
 		string line;
 		file.open(UsersFileName, ios::app);
 
+
 		while (getline(file, line)) {
 			if (login == FindName(line.c_str())) {
 				return true;
